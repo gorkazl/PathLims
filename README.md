@@ -193,7 +193,7 @@ limitations under the License.
 -----------------------------------------------------------------
 ### WHAT IS NEW
 
-##### December XX, 2018
+##### December 22, 2018
 Version 1.0.0 of PathLims has been released.
  
 See the file *CHANGES.md* for a complete history of changes.
