@@ -1,4 +1,4 @@
-# pathlims – ultra-short and ultra-long network generation
+# PathLims – Ultra-Short and Ultra-Long Network Generation
 
 PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays. Python 2.7 and 3.X compatible.
 
