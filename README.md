@@ -76,14 +76,14 @@ Let's generate an ultra-short graph of *N = 8* nodes and *L = 11* edges. We will
 	>>> N = 8; L = 11
 	>>> usnet = pathlims.generators.USgraph(N,L, uscase='Random')
 	>>> print(usnet)
-	...	array([[0, 1, 1, 1, 1, 1, 1, 1],
-	       	   [1, 0, 0, 1, 0, 0, 1, 0],
-	           [1, 0, 0, 0, 0, 0, 0, 0],
-	       	   [1, 1, 0, 0, 0, 0, 0, 0],
-	           [1, 0, 0, 0, 0, 0, 1, 0],
-	           [1, 0, 0, 0, 0, 0, 1, 0],
-	           [1, 1, 0, 0, 1, 1, 0, 0],
-	           [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
+	array([[0, 1, 1, 1, 1, 1, 1, 1],
+		   [1, 0, 0, 1, 0, 0, 1, 0],
+		   [1, 0, 0, 0, 0, 0, 0, 0],
+		   [1, 1, 0, 0, 0, 0, 0, 0],
+		   [1, 0, 0, 0, 0, 0, 1, 0],
+		   [1, 0, 0, 0, 0, 0, 1, 0],
+		   [1, 1, 0, 0, 1, 1, 0, 0],
+		   [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 
 The first node corresponds to the central hub in the initial star graph. The presence of this hub guarantees the diameter of the network to be diam(G) = 2. The remaining 4 edges are seeded at random. 
 
@@ -95,21 +95,21 @@ Let's calculate, numerically, the average pathlength of this network. For this w
 	>>> dij = pathlims.helpers.FloydWarshall(usnet)
 	>>> avlen = ( dij.sum() - dij.trace() ) / ( N*(N-1) )
 	>>> print( avlen )
-	... 1.60714285714
+	1.60714285714
 
 The global efficiency is calculated as the average of the inverse of the distances:
 
 	>>> eij = 1.0 / dij
 	>>> effic = ( eij.sum() - eij.trace() ) / (N*(N-1))
 	>>> print (effic )
-	... 0.696428571429
+	0.696428571429
 
 We now corroborate that the numerical results match the theoretical estimations:
 
 	>>> pathlims.limits.Pathlen_USgraph(N,L)
-	... 1.6071428571428572
+	1.6071428571428572
 	>>> pathlims.limits.Effic_USgraph(N,L)
-	... 0.6964285714285714
+	0.6964285714285714
 
 ##### Example 2 – Sparse ultra-short digraphs (directed graph)
 
@@ -117,14 +117,14 @@ In the range *N ≤ L ≤ 2(N-1)* connected digraphs with shortest pathlength po
 
 	>>> fdnet = pathlims.generators.USdigraph_FlowerDigraph(N,L)
 	>>> fdnet
-	...	array([[0, 1, 1, 0, 1, 0, 1, 0],
-		       [1, 0, 0, 0, 0, 0, 0, 0],
-		       [0, 0, 0, 1, 0, 0, 0, 0],
-		       [1, 0, 0, 0, 0, 0, 0, 0],
-		       [0, 0, 0, 0, 0, 1, 0, 0],
-		       [1, 0, 0, 0, 0, 0, 0, 0],
-		       [0, 0, 0, 0, 0, 0, 0, 1],
-		       [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
+	array([[0, 1, 1, 0, 1, 0, 1, 0],
+		   [1, 0, 0, 0, 0, 0, 0, 0],
+		   [0, 0, 0, 1, 0, 0, 0, 0],
+		   [1, 0, 0, 0, 0, 0, 0, 0],
+		   [0, 0, 0, 0, 0, 1, 0, 0],
+		   [1, 0, 0, 0, 0, 0, 0, 0],
+		   [0, 0, 0, 0, 0, 0, 0, 1],
+		   [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 		       
 ![Figure1](Figs/FlowerDigraph.png)
 
@@ -133,18 +133,18 @@ The average pathlenth and gloal efficiency are numerically calculated as before:
 	>>>  dij = pathlims.helpers.FloydWarshall(fdnet)
 	>>> avlen = ( dij.sum() - dij.trace() ) / ( N*(N-1) )
 	>>> print(avlen)
-	... 2.33928571429
+	2.33928571429
 	>>> eij = 1./dij
 	>>> effic = ( eij.sum() - eij.trace() ) / (N*(N-1))
 	>>> print(effic)
-	... 0.5178571428571429
+	0.5178571428571429
 
 Finally, we corroborate that the numerical results match the theoretically expected values:
 
 	>>> pathlims.limits.Pathlen_FlowerDigraph(N,L)
-	... 2.3392857142857144
+	2.3392857142857144
 	>>> pathlims.limits.Effic_FlowerDigraph(N,L)
-	... 0.51785714285714302
+	0.51785714285714302
 
 ##### Data I/O
 
