@@ -77,13 +77,13 @@ Let's generate an ultra-short graph of *N = 8* nodes and *L = 11* edges. We will
 	>>> usnet = pathlims.generators.USgraph(N,L, uscase='Random')
 	>>> print(usnet)
 	array([[0, 1, 1, 1, 1, 1, 1, 1],
-		   [1, 0, 0, 1, 0, 0, 1, 0],
-		   [1, 0, 0, 0, 0, 0, 0, 0],
-		   [1, 1, 0, 0, 0, 0, 0, 0],
-		   [1, 0, 0, 0, 0, 0, 1, 0],
-		   [1, 0, 0, 0, 0, 0, 1, 0],
-		   [1, 1, 0, 0, 1, 1, 0, 0],
-		   [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
+		[1, 0, 0, 1, 0, 0, 1, 0],
+		[1, 0, 0, 0, 0, 0, 0, 0],
+		[1, 1, 0, 0, 0, 0, 0, 0],
+		[1, 0, 0, 0, 0, 0, 1, 0],
+		[1, 0, 0, 0, 0, 0, 1, 0],
+		[1, 1, 0, 0, 1, 1, 0, 0],
+		[1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 
 The first node corresponds to the central hub in the initial star graph. The presence of this hub guarantees the diameter of the network to be diam(G) = 2. The remaining 4 edges are seeded at random. 
 
@@ -118,19 +118,19 @@ In the range *N ≤ L ≤ 2(N-1)* connected digraphs with shortest pathlength po
 	>>> fdnet = pathlims.generators.USdigraph_FlowerDigraph(N,L)
 	>>> fdnet
 	array([[0, 1, 1, 0, 1, 0, 1, 0],
-		   [1, 0, 0, 0, 0, 0, 0, 0],
-		   [0, 0, 0, 1, 0, 0, 0, 0],
-		   [1, 0, 0, 0, 0, 0, 0, 0],
-		   [0, 0, 0, 0, 0, 1, 0, 0],
-		   [1, 0, 0, 0, 0, 0, 0, 0],
-		   [0, 0, 0, 0, 0, 0, 0, 1],
-		   [1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
+		[1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 1, 0, 0, 0, 0],
+		[1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0],
+		[1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 1],
+		[1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 		       
 ![Figure1](Figs/FlowerDigraph.png)
 
 The average pathlenth and gloal efficiency are numerically calculated as before:
 
-	>>>  dij = pathlims.helpers.FloydWarshall(fdnet)
+	>>> dij = pathlims.helpers.FloydWarshall(fdnet)
 	>>> avlen = ( dij.sum() - dij.trace() ) / ( N*(N-1) )
 	>>> print(avlen)
 	2.33928571429
