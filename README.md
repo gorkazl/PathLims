@@ -91,7 +91,7 @@ The first node corresponds to the central hub in the initial star graph. The pre
 
 Let's calculate, numerically, the average pathlength of this network. For this we use the `FloydWarshall()` function in the *helpers.py* module to calculate the pairwise distance matrix:
 
-	>>>	import pathlims.helpers
+	>>> import pathlims.helpers
 	>>> dij = pathlims.helpers.FloydWarshall(usnet)
 	>>> avlen = ( dij.sum() - dij.trace() ) / ( N*(N-1) )
 	>>> print( avlen )
