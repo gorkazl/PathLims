@@ -60,6 +60,9 @@ ULdigraph_Disconnected_Range1
 ULdigraph_Disconnected_Range2
     Generates a digraph with smallest possible efficiency, when L >= 1/2 N(N-1)
     and order M.
+
+...moduleauthor:: Gorka Zamora-Lopez <galib@zamora-lopez.xyz>
+
 """
 from __future__ import division, print_function, absolute_import
 
@@ -867,7 +870,8 @@ def ULdigraph_Connected_Range1_MBS(N,M):
     N : integer
         Number of nodes of the digraph.
     M : integer
-        Order of the M-Backward Subgraph. M = 2, 3, 4, ... , N.
+        Order of the M-Backward Subgraph. M = 2, 3, 4, ... , N-1.
+        If M = 1, returns a directed ring.
 
     Returns
     -------
@@ -876,16 +880,14 @@ def ULdigraph_Connected_Range1_MBS(N,M):
 
     See Also
     --------
-    ULdigraph_Connected_Dense :
-    ULdigraph_Disconnected :
-    ULdigraph_Disconnected_MBS :
-    ULdigraph_Disconnected_Dense :
+    ULdigraph_Connected_Intermediate :
+    ULdigraph_Connected_Range2 :
     """
 
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
-    if M < 2:  raise ValueError( "M out of range, min(M) = 2" )
-    if M > N:  raise ValueError( "M out of range, max(M) = N" )
+    if M < 1:  raise ValueError( "M out of range, min(M) = 1" )
+    if M > N-1:  raise ValueError( "M out of range, max(M) = N-1" )
 
     # 1) GENERATE THE NETWORK
     # Create the baseline directed ring
@@ -898,6 +900,52 @@ def ULdigraph_Connected_Range1_MBS(N,M):
     for i in range(M):
         for j in range(i):
             adjmatrix[i,j] = 1
+
+    return adjmatrix
+
+def ULdigraph_Connected_Intermediate(N):
+    """Connected ultra-long directed graph with L = (N-1) + 1/2 N(N-1) arcs.
+
+    The generation of strongly connected ultra-long digraphs undergoes a
+    transition when L = (N-1) + 1/2 N(N-1), or density rho = 1/2 + 1/N.
+    If L = (N-1) + 1/2 N(N-1) a unique configuration exists with longest
+    pathlength. This consists of the superposition of a directed ring with a
+    complete directed acyclic graph whose arcs are pointing in the opposite
+    orientations as the ring. That is, each vertex j points to all other
+    vertices with i < j.
+    These digraphs have longest possible pathlength and smallest efficiency,
+    if only if, strongly connected digraphs are considered. The digraphs with
+    smallest efficiency are always disconnected.
+
+    Reference and citation
+    ^^^^^^^^^^^^^^^^^^^^^^
+    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
+    arXiv:1810.12825 (2018).
+
+    Parameters
+    ----------
+    N : integer
+        Number of nodes of the digraph.
+
+    Returns
+    -------
+    adjmatrix : ndarray of rank-2 and integer type.
+        The adjacency matrix of the generated ultra-long digraph.
+
+    See Also
+    --------
+    ULdigraph_Connected_Range1_MBS :
+    ULdigraph_Connected_Range2 :
+    """
+
+    # 0) SECURITY CHECKS
+    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
+
+    # 1) GENERATE THE NETWORK
+    adjmatrix = np.ones((N,N), np.uint8)
+    triuidx = np.triu_indices(N,k=2)
+    adjmatrix[triuidx] = 0
+    adjmatrix[np.diag_indices(N)] = 0
 
     return adjmatrix
 
@@ -934,10 +982,8 @@ def ULdigraph_Connected_Range2(N,L):
 
     See Also
     --------
-    ULdigraph_Connected_MBS :
-    ULdigraph_Disconnected :
-    ULdigraph_Disconnected_MBS :
-    ULdigraph_Disconnected_Dense :
+    ULdigraph_Connected_Range1_MBS :
+    ULdigraph_Connected_Intermediate :
     """
 
     # 0) SECURITY CHECKS
@@ -946,12 +992,8 @@ def ULdigraph_Connected_Range2(N,L):
     if L < Lstart:  raise ValueError( "L out of range, min(L) = 1/2*N*(N-1) + (N-1)" )
     if L > Ltot:    raise ValueError( "L out of range, max(L) = N*(N-1)." )
 
-    # 1) CREATE THE INITIAL NETWORK (DENSEST M-BACKWARDS SUBGRAPH
-    adjmatrix = np.ones((N,N), np.uint8)
-    triuidx = np.triu_indices(N,k=2)
-    adjmatrix[triuidx] = 0
-    adjmatrix[np.diag_indices(N)] = 0
-    del triuidx
+    # 1) CREATE THE INITIAL NETWORK (DENSEST M-BACKWARDS SUBGRAPH)
+    adjmatrix = ULdigraph_Connected_Intermediate(N)
 
     # 2) SEED THE REMAINING FORWARD ARCS ORDERLY
     Lr = L - Lstart

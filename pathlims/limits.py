@@ -759,7 +759,8 @@ def Pathlen_ULdigraph_Range1_MBS(N,M):
     N : integer
         Number of nodes in the digraph.
     M : integer
-        Order of the M-Backward Subgraph. M = 2, 3, ... , N.
+        Order of the M-Backward Subgraph. M = 2, 3, ... , N-1.
+        If M = 1, returns the pathlength of a directed ring.
 
     Returns
     -------
@@ -770,13 +771,14 @@ def Pathlen_ULdigraph_Range1_MBS(N,M):
     --------
     Pathlen_ULdigraph :
     Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Intermediate :
     Pathlen_ULdigraph_Range2 :
     """
 
     # 0) SECURITY CHECK
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
-    if M < 2: raise ValueError( "M out of range, min(M) = 2" )
-    if M > N: raise ValueError( "M out of range, max(M) = N." )
+    if M < 1: raise ValueError( "M out of range, min(M) = 1" )
+    if M > N-1: raise ValueError( "M out of range, max(M) = N-1." )
 
     # 1) CALCULATE THE PATHLENGTH
     M = float(M)
@@ -817,6 +819,7 @@ def Pathlen_ULdigraph_Range1_Approx(N,L):
     --------
     Pathlen_ULdigraph :
     Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Intermediate :
     Pathlen_ULdigraph_Range2 :
     """
     # 0) Security checks
@@ -834,6 +837,45 @@ def Pathlen_ULdigraph_Range1_Approx(N,L):
     term3 = N * ( 0.5 - density + 1./3 * density * np.sqrt(2.0*density) )
 
     avpathlen = term1 - term2 + term3
+    return avpathlen
+
+def Pathlen_ULdigraph_Intermediate(N):
+    """Pathlength of an UL digraph with L = (N-1) + 1/2 N(N-1) arcs.
+
+    Calculates the pathlength of a digraph consisting of the superposition of
+    a directed ring with a complete directed acyclic graph whose arcs are
+    pointing in the opposite orientations as the ring. That is, each vertex j
+    points to all other vertices with i < j.
+
+    Reference and citation
+    ^^^^^^^^^^^^^^^^^^^^^^
+    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
+    arXiv:1810.12825 (2018).
+
+    Parameters
+    ----------
+    N : integer
+        Number of nodes in the digraph.
+
+    Returns
+    -------
+    avpathlen : float
+        The average pathlength of the digraph.
+
+    See Also
+    --------
+    Pathlen_ULdigraph :
+    Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Range2 :
+    """
+
+    # 0) SECURITY CHECK
+    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
+
+    # 1) CALCULATE THE PATHLENGTH
+    avpathlen = float(N + 4) / 6
+
     return avpathlen
 
 def Pathlen_ULdigraph_Range2(N,L):
@@ -865,6 +907,7 @@ def Pathlen_ULdigraph_Range2(N,L):
     Pathlen_ULdigraph :
     Pathlen_ULdigraph_Range1_MBS :
     Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Intermediate :
     """
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
@@ -894,6 +937,99 @@ def Pathlen_ULdigraph_Range2(N,L):
     # Sum all the contributiona
     avpathlen = term1 - term2 + term3
     return avpathlen
+
+def Effic_ULdigraph_Range1_MBS(N,M):
+    """Efficiency of an UL digraph containing an M-Backwards subgraph.
+
+    Calculates the efficiency of a digraph consisting of a directed ring and
+    and an M-backwards subgraph. An M-BS is a set of arcs where the first M
+    nodes all point to all their predecessors. Such digraphs have
+    L = N + 1/2 M(M-1) arcs and longest possible average pathlength, where
+    M < N.
+
+    Reference and citation
+    ^^^^^^^^^^^^^^^^^^^^^^
+    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
+    arXiv:1810.12825 (2018).
+
+    Parameters
+    ----------
+    N : integer
+        Number of nodes in the digraph.
+    M : integer
+        Order of the M-Backward Subgraph. M = 2, 3, ... , N-1.
+        If M = 1, returns the pathlength of a directed ring.
+
+    Returns
+    -------
+    avpathlen : float
+        The average pathlength of the digraph.
+
+    See Also
+    --------
+    Effic_ULdigraph_Intermediate :
+    Effic_ULdigraph_Range2 :
+    """
+    # 0) SECURITY CHECKS
+    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
+    if M < 1: raise ValueError( "M out of range, min(M) = 1" )
+    if M > N-1: raise ValueError( "M out of range, max(M) = N-1." )
+
+    # 1) CALCULATE THE EFFICIENCY
+    Lmax = N*(N-1)
+    term1 = (scipy.special.psi(N) + EMconstant) / (N-1)
+    term2 = float(M-1) / Lmax
+    term3 = 0.5*M - scipy.special.psi(N)
+    term4 = 0.0
+    for j in range(1,M):
+        term4 += scipy.special.psi(N-j)
+    term4 = float(term4) / Lmax
+
+    efficiency = term1 + term2 * term3 + term4
+    return efficiency
+
+def Effic_ULdigraph_Intermediate(N):
+    """Efficiency of a connected UL digraph with L = (N-1) + 1/2 N(N-1) arcs.
+
+    Calculates the efficiency of a digraph consisting of the superposition of
+    a directed ring with a complete directed acyclic graph whose arcs are
+    pointing in the opposite orientations as the ring. That is, each vertex j
+    points to all other vertices with i < j.
+
+    Reference and citation
+    ^^^^^^^^^^^^^^^^^^^^^^
+    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
+    arXiv:1810.12825 (2018).
+
+    Parameters
+    ----------
+    N : integer
+        Number of nodes in the digraph.
+
+    Returns
+    -------
+    avpathlen : float
+        The average pathlength of the digraph.
+
+    See Also
+    --------
+    Effic_ULdigraph_Range1_MBS :
+    Effic_ULdigraph_Range2 :
+    """
+
+    # 0) SECURITY CHECKS
+    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
+
+    # 1) CALCULATE THE PATHLENGTH
+    Lmax = N*(N-1)
+    term1 = N-1
+    term2 = 0.5*N + EMconstant
+    term3 = 0.0
+    for i in range(1,N):
+        term3 += scipy.special.psi(i+1)
+
+    efficiency = ( term1*term2 + term3 ) / Lmax
+    return efficiency
 
 def Effic_ULdigraph_Disconnected(N,L):
     """Smallest possible efficiency of an directed graph.
