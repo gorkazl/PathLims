@@ -192,6 +192,12 @@ limitations under the License.
 -----------------------------------------------------------------
 ### WHAT IS NEW
 
+##### December 31, 2018
+Example scripts have been added and some datasets:
+
+- Two scripts (*EmpiricalNets_Directed.py* and *EmpiricalNets_Undirected.py*) to illustrate how to compare the pathlength and efficiency of real networks to those of ring lattices, random graphs and the true ultra-long and ultra-short limits.
+- Four scripts (*UltraLong_Digraphs.py*, *UltraLong_Graphs.py*, *UltraShort_Digraphs.py* and *UltraShort_Graphs.py*) in which ultra-long and ultra-short networks are generated, their pathlength and efficiencies  are numerically calculated, and compared to the theoretical values for corroboration. 
+
 ##### December 22, 2018
 Version 1.0.0 of PathLims has been released.
  
