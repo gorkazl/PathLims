@@ -163,7 +163,7 @@ While working in an interactive session, after importing a module, the built-in 
 The help for PathLims (`help(pathlims)`) shows the general summary of the package and a list of all the modules in the library. The help for each module, e.g., `help(pathlims.limits)` or `help(pathlims.generators)` will display module specific information and a list of all the functions in the module.
 For further details regarding each function, type:
 
-	>>> help(galib.modulename.functionname)
+	>>> help(pathlims.modulename.functionname)
 
 For IPython and Jupyter notebook users the help command is replaced by a question mark after the module's or function's name, e.g.:
 
