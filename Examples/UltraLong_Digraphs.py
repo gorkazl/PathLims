@@ -61,6 +61,12 @@ nL = len(Llist)
 time1 = timer()
 
 # 1.1) Calculate results for the range-1, when N <= L < (N-1) + 1/2 N(N-1)
+# In this case, we provide the results only for given values of L such that
+# L = N + 1/2 M(M-1) with M = 1, 2, ..., N-1. Results for remaining values
+# of L will be treated in the future.
+# For analytical estimation of the UL limit in digraphs for any value of
+# L < (N-1) + 1/2 N(N-1), see also the approximated result given by function
+# Pathlen_ULdigraph_Range1_Approx()
 Mlist1 = np.arange(1,N)
 nM = len(Mlist1)
 Llist1 = np.zeros(nM, np.uint)
@@ -137,6 +143,10 @@ for L in range(nL1):
     effic_th_disco1[L] = Effic_ULdigraph_Disconnected(N,L)
 
 # 2.2) Calculate results for the range-1, when L >= 1/2 N(N-1)
+# In this case, we provide the results only for given values of L such that
+# L = Lo/2 + 1/2 M(M-1) with M = 1, 2, ..., N. Results for remaining values
+# of L will be treated in the future.
+
 Mlist = np.arange(2,N+1)
 nM = len(Mlist)
 Llist_disco2 = np.zeros(nM, np.uint)

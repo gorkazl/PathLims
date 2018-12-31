@@ -71,6 +71,9 @@ for L in range(N-1, nL):
 
 
 # 2) DO THE CALCULATIONS -- DISCONNECTED GRAPHS
+# In this case, we provide the results only for given values of L such that
+# L = 1/2 M(M-1) with M = 2, ..., N. Results for remaining values of L will be
+# treated in the future.
 Mlist = np.arange(2,N+1)
 nM = len(Mlist)
 LMlist = np.zeros(nM, np.uint)
