@@ -58,6 +58,7 @@ Effic_ULdigraph_Disconnected
 """
 from __future__ import division, print_function, absolute_import
 
+import warnings
 import numpy as np
 import numpy.random
 import scipy.special
@@ -658,28 +659,32 @@ def Effic_ULgraph(N,L, connected=True):
     # 1) CHOOSE CORRECT MODEL AND CALCULATE CORRESPONDING EFFICIENCY
     if connected:
         # Allow only CONNECTED graphs
-        assert L >= N-1, "Number of edges out of range. L < N-1 incompatible with connected graphs"
+        if L < N-1:
+            msg = "Number of edges out of range. L < N-1 incompatible with connected graphs. Returning NaN."
+            warnings.warn(msg, RuntimeWarning)
+            efficiency = np.nan
+        else:
+            # Number of nodes in the complete subgraph and in the tail
+            Nc = 0.5 * (3 + np.sqrt(9 + 8*(L-N)))
+            Nc = np.floor(Nc)
+            Nt = N - Nc
 
-        # Number of nodes in the complete subgraph and in the tail
-        Nc = 0.5 * (3 + np.sqrt(9 + 8*(L-N)))
-        Nc = np.floor(Nc)
-        Nt = N - Nc
+            # Number of edges in complete subgraph and in the tail
+            Lc = 0.5 * Nc * (Nc-1)
+            Lt = Nt - 1
+            Le = L - Lt - Lc
 
-        # Number of edges in complete subgraph and in the tail
-        Lc = 0.5 * Nc * (Nc-1)
-        Lt = Nt - 1
-        Le = L - Lt - Lc
-
-        # Sum the contributions
-        eijsum = L - Nt - (Le-1)/(Nt +1) + \
-                    N * (scipy.special.psi(Nt+2) + EMconstant - 1)
-        efficiency = eijsum / Ltot
+            # Sum the contributions
+            eijsum = L - Nt - (Le-1)/(Nt +1) + \
+                        N * (scipy.special.psi(Nt+2) + EMconstant - 1)
+            efficiency = eijsum / Ltot
 
     else:
         # Allow efficiency of DISCONNECTED graphs
         efficiency = L / Ltot
 
     return efficiency
+
 
 ## DIRECTED GRAPHS ____________________________________________________________
 def Pathlen_ULdigraph(N,L):
