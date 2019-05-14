@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2013 - 2018, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+# Copyright (c) 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
 # you may not use this software except in compliance with the License.
@@ -183,7 +183,7 @@ open an issue in GitHub.
 
 License
 -------
-Copyright 2018 - 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+Copyright 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this software except in compliance with the License.
@@ -200,6 +200,13 @@ from . import limits
 from . import generators
 # from . import helpers
 
+
+__author__ = "Gorka Zamora-Lopez"
+__email__ = "galib@Zamora-Lopez.xyz"
+__copyright__ = "Copyright 2019"
+__license__ = "Apache License version 2.0"
+__version__ = "1.0.0"
+__update__="14/05/2019"
 
 
 
