@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 - 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
 # you may not use this software except in compliance with the License.
@@ -35,14 +36,15 @@ from __future__ import division, print_function
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
-import numba
 # Local imports
 import pathlims
 from pathlims.limits import ( Pathlen_USgraph, Pathlen_ULgraph,
                             Effic_USgraph, Effic_ULgraph )
-from pathlims.helpers import ( LoadFromPajek, Reciprocity, FloydWarshall_Numba,
+from pathlims.helpers import ( LoadFromPajek, Reciprocity, FloydWarshall,
                                 RandomGraph, Lattice1D_FixLinks )
 
 
@@ -69,7 +71,7 @@ print('N: %d\tL: %d\tDensity: %1.4f' %(N,L, density) )
 
 # 1) NUMERICALLY COMPUTE THE PATHLENGTH AND EFFICIENCY OF THE NETWORK
 # Calculate the pairwise distance matrix and calculate average
-dij = FloydWarshall_Numba(net)
+dij = FloydWarshall(net)
 dijsum = dij.sum()
 if np.isinf(dijsum):
     pathlen_emp = np.inf
@@ -106,7 +108,7 @@ for re in range(nrealiz):
     # Generate a random graph
     randnet = RandomGraph(N,L, directed=False)
     # Calculate distance matrix and pathlength
-    rdij = FloydWarshall_Numba(randnet)
+    rdij = FloydWarshall(randnet)
     rdijsum = rdij.sum()
     if np.isinf(rdijsum):
         pathlenlist[re] = np.inf
@@ -137,7 +139,7 @@ effic_rand = efficlist.mean()
 # Generate a ring lattice of same number of edges
 latt = Lattice1D_FixLinks(N,L)
 # Calculate its distance matrix and the average pathlength
-ldij = FloydWarshall_Numba(latt)
+ldij = FloydWarshall(latt)
 pathlen_latt = ( ldij.sum() - ldij.trace() ) / (2*Lmax)
 # Calculate the efficiency matrix and the average
 leij = 1. / ldij

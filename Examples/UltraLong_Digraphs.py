@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 - 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
 # you may not use this software except in compliance with the License.
@@ -30,6 +31,8 @@ from __future__ import division, print_function, absolute_import
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 # Local imports

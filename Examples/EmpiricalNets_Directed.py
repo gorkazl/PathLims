@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 - 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
 # you may not use this software except in compliance with the License.
@@ -33,6 +34,8 @@ from __future__ import division, print_function
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 # Local imports
@@ -40,7 +43,7 @@ import pathlims
 from pathlims.limits import ( Pathlen_USdigraph, Pathlen_ULdigraph,
                             Effic_USdigraph, Effic_ULdigraph_Disconnected )
 from pathlims.generators import ULdigraph_Connected_Range1_MBS
-from pathlims.helpers import ( LoadFromPajek, Reciprocity, FloydWarshall_Numba,
+from pathlims.helpers import ( LoadFromPajek, Reciprocity, FloydWarshall,
                                 RandomGraph, Lattice1D_FixLinks )
 
 
@@ -67,7 +70,7 @@ print('N: %d\tL: %d\tDensity: %1.4f' %(N,L, L/Lmax) )
 
 # 1) NUMERICALLY COMPUTE THE PATHLENGTH AND EFFICIENCY OF THE NETWORK
 # Calculate the pairwise distance matrix and calculate average
-dij = FloydWarshall_Numba(net)
+dij = FloydWarshall(net)
 dijsum = dij.sum()
 if np.isinf(dijsum):
     pathlen_emp = np.inf
@@ -102,12 +105,12 @@ effic_us = Effic_USdigraph(N,L)
 M = int( 0.5*(1.0 + np.sqrt(1.0 + 8.0*(L-N))) )
 # Generate the UL digraph containing an M-BS. Calculate its efficiency
 ulnet1 = ULdigraph_Connected_Range1_MBS(N,M)
-dij1 = FloydWarshall_Numba(ulnet1)
+dij1 = FloydWarshall(ulnet1)
 eij1 = 1./dij1
 effic1 = ( eij1.sum() - eij1.trace() ) / Lmax
 # Generate the UL digraph containing a (M+1)-BS. Calculate its efficiency
 ulnet2 = ULdigraph_Connected_Range1_MBS(N,M+1)
-dij2 = FloydWarshall_Numba(ulnet2)
+dij2 = FloydWarshall(ulnet2)
 eij2 = 1./dij2
 effic2 = ( eij2.sum() - eij2.trace() ) / Lmax
 # Interpolate the result
@@ -130,7 +133,7 @@ for re in range(nrealiz):
     # Generate a random graph
     randnet = RandomGraph(N,L, directed=True)
     # Calculate distance matrix and pathlength
-    rdij = FloydWarshall_Numba(randnet)
+    rdij = FloydWarshall(randnet)
     rdijsum = rdij.sum()
     if np.isinf(rdijsum):
         pathlenlist[re] = np.inf
@@ -162,7 +165,7 @@ effic_rand = efficlist.mean()
 Lund = int(L/2)
 latt = Lattice1D_FixLinks(N,Lund)
 # Calculate its distance matrix and the average pathlength
-ldij = FloydWarshall_Numba(latt)
+ldij = FloydWarshall(latt)
 pathlen_latt = ( ldij.sum() - ldij.trace() ) / Lmax
 # Calculate the efficiency matrix and the average
 leij = 1. / ldij
