@@ -16,46 +16,44 @@ Visit the help of each module for a complete list of functions.
 
 For a complete description of the boundaries for the average pathlength and global efficiency, and for a illustration of ultra-short / ultra-long network generation, see:
 
-- G. Zamora-López & R. Brasselet "[Sizing the length of complex networks](https://arxiv.org/1810.12825)" arXiv:1810.12825 (2018).
+- G. Zamora-López & R. Brasselet "[Sizing complex networks](https://doi.org/10.1038/s42005-019-0239-0)" *Commun. Phys.* **2**:144 (2019).
 
 Please cite the above reference if you use PathLims.
 Results for some special cases (connected and undirected graphs) can also be found in: D. Barmpoutis & R.M. Murray "*Extremal Properties of Complex Networks*"
 arXiv:1104.5532v1 (2011); and L. Gulyas, et al. "*An Estimation of the Shortest and Largest Average Path Length in Graphs of Given Density*"
 arXiv:1101.2549v1 (2011).
 
-
 ### INSTALLATION
 
-Installation of PathLims is simple. Only requirements are a Python distribution is installed in your computer and the [PIP](https://github.com/pypa/pip) Python package manager. If Python was installed via the [Canopy](https://www.enthought.com/product/canopy/) or the [Anaconda](https://www.anaconda.com) distributions, then pip is surely installed. To make sure open a terminal and type:
+Installation of ÜathLims is simple. An existing python distribution and the [pip](https://github.com/pypa/pip) package manager need to be installed. If Python was installed via the [Canopy](https://www.enthought.com/product/canopy/) or the [Anaconda](https://www.anaconda.com) distributions, then `pip` is surely installed. To check, open a terminal and type:
 
 	$ pip --help
 
-PathLims is not registered in PyPI (the Python Packages Index) and installation follows directly from GitHub. However, pip automatically takes care of the dependencies (see *requirements.txt*). There are two alternative manners to install: the easy and the lazy. 
+**- The simple installation**: PathLims is registered in [PyPI](https://pypi.org/project/pathlims/) (the Python Packages Index), therefore installation from the terminal is straight forward. `pip` will automatically take care of the  dependencies (see the *requirements.txt* file). Simply type:
 
-**– The easy installation**: Visit the GitHub repository of PathLims [https://github.com/gorkazl/pathlims/](https://github.com/gorkazl/pathlims/) and click on the "Clone or download" button at the right hand side (the green button). Select "Download ZIP". Unzip the file, open a terminal and move to the folder, e.g.,
+	$ pip install galib 
 
-	$ cd ~/Downloads/pathlims-master/
+To confirm the installation open an interactive session and try to import the library by typing `import pathlims`.
 
-In the folder that contains the *setup.py* file, type
+> **NOTE:** If you are using Python 2 and Python 3 environments, PathLims needs to be installed in each of the environments separately.
 
-	$ pip install .
+**- Installation from GitHub (lazy version)**: If [git](https://git-scm.com) is also installed in your computer, then open a terminal and type:
 
-Do not forget the "." at the end which means "*look for the setup.py file in the current directory*." The PIP manager will take care of the dependencies (may require an internet connection) and install PathLims. To confirm the installation open an interactive session and try to import the library by typing `import pathlims`, or run one of the test scripts in the *Examples/* folder, e.g.,
-
-	$ cd Examples/
-	$ python UltraShort_Graphs.py
-
-> **NOTE**: After installation the current folder "*~/Downloads/pathlims-master/*" can be safely deleted, or moved somewhere else if you want to conserve the examples and the tests.
-
-**– The lazy installation**: If [git](https://git-scm.com) is also installed in your computer, then open a terminal and type:
-
-	$ pip install git+https://github.com/gorkazl/pathlims.git@master
+	$ pip install git+https://github.com/gorkazl/PathLims.git@master
 
 This will install the package, that is, the content in the folder *pathlims/*. Other files (Examples/, README.md, LICENSE.txt, etc.) need to be downloaded manually, if wanted.
 
+**- Installation from GitHub (full download)**: Visit the GitHub repository [https://github.com/gorkazl/PathLims/](https://github.com/gorkazl/PathLims/) and click on the "Clone or download" button at the right hand side (the green button). Select "Download ZIP". Unzip the file, open a terminal and move to the folder, e.g.,
 
-> **NOTE:** If you are using Python 2 and Python 3 environments, pathlims needs to be installed in each environment separately.
+	$ cd ~/Downloads/PathLims-master/
 
+Once on the folder that contains the *setup.py* file, type the following
+
+	$ pip install .
+
+Do not forget the "." at the end which means "*look for the setup.py file in the current directory*." This will check for the dependencies and install PathLims. 
+
+> **NOTE**: After installation the current folder "*~/Downloads/PathLims-master/*" can be safely deleted, or moved somewhere else if you want to conserve the examples and the tests.
 
 
 ### HOW TO USE PathLims
