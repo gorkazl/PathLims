@@ -10,7 +10,7 @@ setup(
     name = 'pathlims',
     description = 'A package to study the length boundaries of complex networks.',
     url = 'https://github.com/gorkazl/PathLims',
-    version = '1.0.1',
+    version = '1.1.0',
     license = 'Apache License 2.0',
 
     author = 'Gorka Zamora-Lopez',
