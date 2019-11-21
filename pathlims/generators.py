@@ -92,8 +92,7 @@ def USgraph(N,L, uscase='Random', reportdisco=False):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -149,8 +148,7 @@ def USgraph_Disconnected(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -190,8 +188,7 @@ def USgraph_Random(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -250,8 +247,7 @@ def USgraph_RichClub(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -338,8 +334,7 @@ def USdigraph(N,L, onlyconnected=True, uscase='Random', reportdisco=False):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -430,8 +425,7 @@ def USdigraph_iDirectedRing(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -486,8 +480,7 @@ def USdigraph_iStarDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -541,8 +534,7 @@ def USdigraph_FlowerDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -608,8 +600,7 @@ def USdigraph_Random(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -669,8 +660,7 @@ def USdigraph_RichClub(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -748,8 +738,7 @@ def ULgraph_Connected(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
     L. Gulyas, G. Horvath, T. Cseri & G. Kampis *An estimation of the
@@ -810,8 +799,7 @@ def ULgraph_Disconnected_Mcomplete(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -863,8 +851,7 @@ def ULdigraph_Connected_Range1_MBS(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -920,8 +907,7 @@ def ULdigraph_Connected_Intermediate(N):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -966,8 +952,7 @@ def ULdigraph_Connected_Range2(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1026,8 +1011,7 @@ def ULdigraph_Disconnected_Range1(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1089,8 +1073,7 @@ def ULdigraph_Disconnected_Range2(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "*Sizing complex networks*" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
