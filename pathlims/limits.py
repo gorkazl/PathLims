@@ -553,7 +553,7 @@ def Effic_iStarDigraph(N,L):
 
 ## ULTRA-LONG LIMIT ###########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
-def ULpathleng_graph(N,L):
+def Pathlen_ULgraph(N,L):
     """
     Longest possible average pathlength for graphs (ultra-long limit).
 
@@ -623,7 +623,7 @@ def Effic_ULgraph(N,L, connected=True):
 
     If only the properties of connected graphs are desired, then it
     corresponds to the efficiency of the connected ultra-long graph, see also
-    the function ULpathleng_graph(N,L).
+    the function Pathlen_ULgraph(N,L).
     However, the smallest efficiency possible corresponds always to graphs that
     are disconnected. Given graphs are allowed to be disconnected, the smallest
     efficiency any graph could take equals the density of the graph.

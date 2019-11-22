@@ -9,14 +9,9 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-#
 # REFERENCE AND CITATION
-#
-# When using PathLims for scientific publications, cite:
-#
-# G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-# arXiv:1810.12825 (2018).
-#
+# When using PathLims, please cite:
+# G. Zamora-Lopez & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
 #
 
 """
@@ -30,7 +25,15 @@ Case for undirected networks. We will:
 4. Calculate pathlength and efficiency of equivalent random graphs and lattices.
 5. Compare the results.
 
+PathLims works as an stand-alone package. For simplicity, however, this example
+require that the pyGAlib package is installed for the manipulation, analysis and
+generation of (di)graphs. pyGAlib can be installed from the Python Package Index
+using PyPI. In a terminal, simply type:
+    $ pip install galib
+
+See further information in https://github.com/gorkazl/pyGAlib
 """
+
 from __future__ import division, print_function
 
 # Standard library imports
