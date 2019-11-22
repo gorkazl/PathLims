@@ -133,7 +133,7 @@ pathlenlist = np.zeros(nrealiz, np.float)
 efficlist = np.zeros(nrealiz, np.float)
 for re in range(nrealiz):
     if re in np.arange(10,110,10):
-        print( 're:', re )
+        print( re )
 
     # Generate a random graph
     randnet = galib.models.RandomGraph(N,L, directed=True)
