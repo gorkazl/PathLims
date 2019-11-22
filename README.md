@@ -10,7 +10,7 @@ The package contains three modules:
 
 Visit the help of each module for a complete list of functions.
 
-> **NOTE:** PathLims is fully compatible with [pyGAlib](https://github.com/gorkazl/pyGAlib), a library for graph analysis in Python/Numpy, but it can be used independently. 
+> **NOTE:** PathLims is fully compatible with [pyGAlib](https://github.com/gorkazl/pyGAlib), a library for graph analysis in Python/Numpy, but it can be used independently.
 
 #### Reference and citation
 
@@ -31,7 +31,7 @@ Installation of ÜathLims is simple. An existing python distribution and the [pi
 
 **- The simple installation**: PathLims is registered in [PyPI](https://pypi.org/project/pathlims/) (the Python Packages Index), therefore installation from the terminal is straight forward. `pip` will automatically take care of the  dependencies (see the *requirements.txt* file). Simply type:
 
-	$ pip install galib 
+	$ pip install galib
 
 To confirm the installation open an interactive session and try to import the library by typing `import pathlims`.
 
@@ -51,7 +51,7 @@ Once on the folder that contains the *setup.py* file, type the following
 
 	$ pip install .
 
-Do not forget the "." at the end which means "*look for the setup.py file in the current directory*." This will check for the dependencies and install PathLims. 
+Do not forget the "." at the end which means "*look for the setup.py file in the current directory*." This will check for the dependencies and install PathLims.
 
 > **NOTE**: After installation the current folder "*~/Downloads/PathLims-master/*" can be safely deleted, or moved somewhere else if you want to conserve the examples and the tests.
 
@@ -83,7 +83,7 @@ Let's generate an ultra-short graph of *N = 8* nodes and *L = 11* edges. We will
 		[1, 1, 0, 0, 1, 1, 0, 0],
 		[1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 
-The first node corresponds to the central hub in the initial star graph. The presence of this hub guarantees the diameter of the network to be diam(G) = 2. The remaining 4 edges are seeded at random. 
+The first node corresponds to the central hub in the initial star graph. The presence of this hub guarantees the diameter of the network to be diam(G) = 2. The remaining 4 edges are seeded at random.
 
 ![Figure1](Figs/USgraph_Rand.png)
 
@@ -123,7 +123,7 @@ In the range *N ≤ L ≤ 2(N-1)* connected digraphs with shortest pathlength po
 		[1, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 1],
 		[1, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
-		       
+
 ![Figure1](Figs/FlowerDigraph.png)
 
 The average pathlenth and gloal efficiency are numerically calculated as before:
@@ -146,7 +146,7 @@ Finally, we corroborate that the numerical results match the theoretically expec
 
 ##### Data I/O
 
-Since PathLims is based on NumPy arrays, saving and reading of adjacency matrices, can be performed using the usual data I/O functionalities of NumPy. See for example the documentation for functions: `loadtxt()`, `savetxt()`, `load()`, `save()` and `savez()`. 
+Since PathLims is based on NumPy arrays, saving and reading of adjacency matrices, can be performed using the usual data I/O functionalities of NumPy. See for example the documentation for functions: `loadtxt()`, `savetxt()`, `load()`, `save()` and `savez()`.
 See also he *tools.py* module in pyGAlib for other data conversions.
 
 
@@ -190,16 +190,14 @@ limitations under the License.
 -----------------------------------------------------------------
 ### WHAT IS NEW
 
+##### November 22, 2019
+Stable version 1.0.0 checked, validated and released.
+
 ##### December 31, 2018
 Example scripts have been added and some datasets:
 
 - Two scripts (*EmpiricalNets_Directed.py* and *EmpiricalNets_Undirected.py*) to illustrate how to compare the pathlength and efficiency of real networks to those of ring lattices, random graphs and the true ultra-long and ultra-short limits.
-- Four scripts (*UltraLong_Digraphs.py*, *UltraLong_Graphs.py*, *UltraShort_Digraphs.py* and *UltraShort_Graphs.py*) in which ultra-long and ultra-short networks are generated, their pathlength and efficiencies  are numerically calculated, and compared to the theoretical values for corroboration. 
+- Four scripts (*UltraLong_Digraphs.py*, *UltraLong_Graphs.py*, *UltraShort_Digraphs.py* and *UltraShort_Graphs.py*) in which ultra-long and ultra-short networks are generated, their pathlength and efficiencies  are numerically calculated, and compared to the theoretical values for corroboration.
 
 ##### December 22, 2018
 Version 1.0.0b2 (beta) of PathLims has been uploaded.
- 
-
-
-
-
