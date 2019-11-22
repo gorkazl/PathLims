@@ -193,6 +193,8 @@ limitations under the License.
 ##### November 22, 2019
 Stable version 1.0.0 checked, validated and released.
 
+PathLims has been registered in PyPI (https://pypi.org/project/pathlims/). Direct installation and version management using `pip` is now available.
+
 ##### December 31, 2018
 Example scripts have been added and some datasets:
 
