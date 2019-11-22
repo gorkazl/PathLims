@@ -26,7 +26,7 @@ estimation of the ultra-long boundaries for graphs. We will:
 PathLims works as an stand-alone package. For simplicity, however, this example
 require that the pyGAlib package is installed for the manipulation, analysis and
 generation of (di)graphs. pyGAlib can be installed from the Python Package Index
-using PyPI. In a terminal, simply type:
+using `pip`. In a terminal, simply type:
     $ pip install galib
 
 See further information in https://github.com/gorkazl/pyGAlib
@@ -41,11 +41,11 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
+import galib, galib.metrics_numba
 # Local imports
 import pathlims
-from pathlims.limits import Pathlen_ULgraph, Effic_ULgraph
-from pathlims.generators import ULgraph_Connected, ULgraph_Disconnected_Mcomplete
-from pathlims.helpers import FloydWarshall
+import pathlims.limits as lims
+import pathlims.generators as gens
 
 
 ################################################################################
@@ -56,7 +56,12 @@ Lmax = int( 0.5*N*(N-1) )
 Llist = np.arange(Lmax+1)
 nL = len(Llist)
 
+# Print some feedback
+print( '\nNetwork size, N:', N )
+
+
 # 1) DO THE CALCULATIONS -- CONNECTED GRAPHS
+time1 = timer()
 pathlen_num = np.zeros(nL, np.float)
 pathlen_th = np.zeros(nL, np.float)
 effic_num_con = np.zeros(nL, np.float)
@@ -64,19 +69,19 @@ effic_th_con = np.zeros(nL, np.float)
 pathlen_num[:N-1] = np.inf
 pathlen_th[:N-1] = np.inf
 
-time1 = timer()
+print( 'Calculating results for CONNECTED graphs ...' )
 for L in range(N-1, nL):
     # Generate the connected ultra-long graph and compute distance / efficiency
-    net = ULgraph_Connected(N,L)
-    dij = FloydWarshall(net)
+    net = gens.ULgraph_Connected(N,L)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     pathlen_num[L] = ( dij.sum() - dij.trace() ) / (2*Lmax)
     eij = 1./dij
     effic_num_con[L] = ( eij.sum() - eij.trace() ) / (2*Lmax)
 
     # Calculate the results analitically
     ## Note: Pathlen_ULdigraph() returns 'inf', for L < N-1.
-    pathlen_th[L] = Pathlen_ULgraph(N,L)
-    effic_th_con[L] = Effic_ULgraph(N,L, connected=True)
+    pathlen_th[L] = lims.Pathlen_ULgraph(N,L)
+    effic_th_con[L] = lims.Effic_ULgraph(N,L, connected=True)
 
 
 # 2) DO THE CALCULATIONS -- DISCONNECTED GRAPHS
@@ -89,36 +94,38 @@ LMlist = np.zeros(nM, np.uint)
 effic_num_disco = np.zeros(nM, np.float)
 effic_th_disco = np.zeros(nM, np.float)
 
+print( 'Calculating results for DISCONNECTED graphs ...' )
 for counter,M in enumerate(Mlist):
     # Get number of edges in an M-complete graph of order M
     LM = int( 0.5*M*(M-1) )
     LMlist[counter] = LM
 
     # Generate the M-complete graph and compute its efficiency
-    net = ULgraph_Disconnected_Mcomplete(N,M)
-    dij = FloydWarshall(net)
+    net = gens.ULgraph_Disconnected_Mcomplete(N,M)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     eij = 1./dij
     effic_num_disco[counter] = ( eij.sum() - eij.trace() ) / (2*Lmax)
 
     # Calculate the results analitically
-    effic_th_disco[counter] = Effic_ULgraph(N,LM, connected=False)
+    effic_th_disco[counter] = lims.Effic_ULgraph(N,LM, connected=False)
 
 time2 = timer()
 print(time2 - time1, 'seconds')
 
 
 # 3) SUMMARISE THE RESULTS
+print( '\nSUMMARY' )
 diff_pathlen = abs(pathlen_num[N:] - pathlen_th[N:])
 error_pathlen = diff_pathlen.sum()
 print('Pathlength. Total error:', error_pathlen )
 
 diff_effic_con = abs(effic_num_con - effic_th_con)
 error_effic_con = diff_effic_con.sum()
-print('Efficiency. Total error:', error_effic_con )
+print('Efficiency (connected). Total error:', error_effic_con )
 
 diff_effic_disco = abs(effic_num_disco - effic_th_disco)
 error_effic_disco = diff_effic_disco.sum()
-print('Efficiency. Total error:', error_effic_disco )
+print('Efficiency (disconnected). Total error:', error_effic_disco )
 
 
 # 4) PLOT THE RESULTS

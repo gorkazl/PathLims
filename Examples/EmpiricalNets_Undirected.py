@@ -28,7 +28,7 @@ Case for undirected networks. We will:
 PathLims works as an stand-alone package. For simplicity, however, this example
 require that the pyGAlib package is installed for the manipulation, analysis and
 generation of (di)graphs. pyGAlib can be installed from the Python Package Index
-using PyPI. In a terminal, simply type:
+using `pip`. In a terminal, simply type:
     $ pip install galib
 
 See further information in https://github.com/gorkazl/pyGAlib
@@ -43,14 +43,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
-try:
-    import galib
-except:
-    os.system('pip install galib')
-    import galib
-import galib.tools
-import galib.models
-import galib.metrics_numba
+import galib, galib.tools, galib.models, galib.metrics_numba
 # Local imports
 import pathlims
 import pathlims.limits as lims
@@ -61,7 +54,7 @@ import pathlims.limits as lims
 # Choose one from ( Und_Human.net, Und_Jazz.net, Und_Zachary.net,
 # Und_Dolphins.net, Und_Chicago.net, Und_London.net )
 dataroot = 'Data/'
-netfname = 'Und_Zachary.net'
+netfname = 'Und_Human.net'
 net = galib.tools.LoadFromPajek(dataroot + netfname, getlabels=False)
 # Binarise the network
 net = np.where(net,1,0).astype(np.uint8)
@@ -73,7 +66,7 @@ L = 0.5*net.sum()
 Lmax = int( 0.5*N*(N-1) )
 density = L / Lmax
 # Print some feedback
-print('Network:', netfname)
+print('\nNetwork:', netfname)
 print('N: %d\tL: %d\tDensity: %1.4f' %(N,L, density) )
 
 
@@ -110,11 +103,14 @@ effic_ul = lims.Effic_ULgraph(N,L, connected=connected)
 # 3) CALCULATE AVERAGE PATHLENGTH FOR EQUIVALENT RANDOM GRAPHS AND RING LATTICES
 # 3.1) Equivalent random graphs, from ensemble
 nrealiz = 100
-print( "Calculating %d random realizations ..." %nrealiz)
+print( "\nCalculating %d random realizations ..." %nrealiz)
 
 pathlenlist = np.zeros(nrealiz, np.float)
 efficlist = np.zeros(nrealiz, np.float)
 for re in range(nrealiz):
+    if re in np.arange(10,110,10):
+        print( re )
+
     # Generate a random graph
     randnet = galib.models.RandomGraph(N,L, directed=False)
     # Calculate distance matrix and pathlength
@@ -127,6 +123,7 @@ for re in range(nrealiz):
     # Calculate efficiency matrix and efficiency
     reij = 1./rdij
     efficlist[re] = reij.sum() - reij.trace()
+print( 'Finished.' )
 
 # Normalise the results
 pathlenlist /= 2*Lmax
@@ -141,7 +138,7 @@ else:
 nbad = nrealiz - goodidx.size
 if nbad:
     print( '%d disconnected random graph(s) found out of %d realizations' %(nbad,nrealiz) )
-    print( 'Ignored from ensemble average pathlength' )
+    print( 'Discarding them from calculation of ensemble average pathlength' )
 # Calculate the ensemble average pathlength
 effic_rand = efficlist.mean()
 
@@ -158,12 +155,13 @@ effic_latt = ( leij.sum() - leij.trace() ) / (2*Lmax)
 
 # 3) PLOT THE RESULTS
 # 3.1) Print some feedback
-print('\t\tPathlength\tEfficiency')
-print('Ultra-short\t%2.4f\t\t%2.4f' %(pathlen_us, effic_us) )
-print('Random\t\t%2.4f\t\t%2.4f' %(pathlen_rand, effic_rand) )
-print('Empirical\t%2.4f\t\t%2.4f' %(pathlen_emp, effic_emp) )
-print('Lattice\t\t%2.4f\t\t%2.4f' %(pathlen_latt, effic_latt) )
-print('Ultra-long\t%2.4f\t\t%2.4f' %(pathlen_ul, effic_ul) )
+print( '\nRESULTS --------------------------------------' )
+print( '\t\tPathlength\tEfficiency' )
+print( 'Ultra-short\t%2.4f\t\t%2.4f' %(pathlen_us, effic_us) )
+print( 'Random\t\t%2.4f\t\t%2.4f'   %(pathlen_rand, effic_rand) )
+print( 'Empirical\t%2.4f\t\t%2.4f'  %(pathlen_emp, effic_emp) )
+print( 'Lattice\t\t%2.4f\t\t%2.4f'  %(pathlen_latt, effic_latt) )
+print( 'Ultra-long\t%2.4f\t\t%2.4f' %(pathlen_ul, effic_ul) )
 
 # 3.2) Plot the figures
 plt.figure()
