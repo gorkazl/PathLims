@@ -20,16 +20,16 @@ graphs and digraphs, in separate functions.
 
 ULTRA-SHORT LIMITS
 ==================
-USpathlen_graph
+Pathlen_USgraph
     Shortest possible average pathlength for graphs (ultra-short limit).
-USeffic_graph
+Effic_USgraph
     Largest possible global efficiency for graphs (ultra-short limit).
 
-USpathlen_digraph
+Pathlen_USdigraph
     Shortest possible average pathlength for directed graphs (ultra-short limit).
 Pathlen_FlowerDigraph
     Average pathlength of a flower digraph (ultra-short limit).
-USeffic_digraph
+Effic_USdigraph
     Largest possible global efficiency for digraphs (ultra-short limit).
 Effic_FlowerDigraph
     Global efficiency of a flower digraph (ultra-short limit).
@@ -40,27 +40,27 @@ Effic_iStarDigraph
 
 ULTRA-LONG LIMITS
 =================
-ULpathlen_graph
+Pathlen_ULgraph
     Longest possible average pathlength for graphs (ultra-long limit).
-ULeffic_graph
+Effic_ULgraph
     Smallest possible efficiency for graphs (ultra-long limit).
 
-ULpathlen_digraph
+Pathlen_ULdigraph
     Longest possible pathlength for strongly connected digraphs (ultra-long limit).
-ULpathlen_digraph_Range1_MBS
+Pathlen_ULdigraph_Range1_MBS
     Longest possible pathlength of a strongly connected digraphs containing an
     M-Backwards subgraph (ultra-long limit).
     Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
-ULpathlen_digraph_Range1_Approx
+Pathlen_ULdigraph_Range1_Approx
     Longest possible pathlength for a strongly connected digraph (ultra-long
     limit, approximation).
     Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
-ULpathlen_digraph_Intermediate
+Pathlen_ULdigraph_Intermediate
     Largest possible pathlength for a digraph with L = (N-1) + 1/2 N(N-1) arcs.
-ULpathlen_digraph_Range2
+Pathlen_ULdigraph_Range2
     Longest possible pathlength of a strongly connected digraph (ultra-long limit).
     Valid in the range when L >= (N-1) + 1/2 N(N-1), or density >= 1/2 + 1/N.
-ULeffic_digraph_Disconnected
+Effic_ULdigraph_Disconnected
     Smallest possible efficiency of a digraph that is not strongly connected.
 
 """
@@ -77,7 +77,7 @@ EMconstant = 0.57721566490153286060
 
 ## ULTRA-SHORT LIMIT ##########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
-def USpathlen_graph(N,L):
+def Pathlen_USgraph(N,L):
     """
     Shortest possible average pathlength for graphs (ultra-short limit).
 
@@ -110,7 +110,7 @@ def USpathlen_graph(N,L):
 
     See Also
     --------
-    USeffic_graph :
+    Effic_USgraph :
     USgraph :
     USdigraph :
     """
@@ -130,7 +130,7 @@ def USpathlen_graph(N,L):
 
     return avpathlen
 
-def USeffic_graph(N,L):
+def Effic_USgraph(N,L):
     """
     Largest possible global efficiency for graphs (ultra-short limit).
 
@@ -161,7 +161,7 @@ def USeffic_graph(N,L):
 
     See Also
     --------
-    USpathlen_graph :
+    Pathlen_USgraph :
     USgraph :
     USdigraph :
     """
@@ -182,7 +182,7 @@ def USeffic_graph(N,L):
     return efficiency
 
 ## DIRECTED GRAPHS __________________________________________________________
-def USpathlen_digraph(N,L):
+def Pathlen_USdigraph(N,L):
     """
     Shortest possible average pathlength for directed graphs (ultra-short limit).
 
@@ -209,7 +209,7 @@ def USpathlen_digraph(N,L):
     See Also
     --------
     Pathlen_FlowerDigraph :
-    USeffic_digraph :
+    Effic_USdigraph :
     USgraph :
     USdigraph :
     """
@@ -260,7 +260,7 @@ def Pathlen_FlowerDigraph(N,L):
 
     See Also
     --------
-    USeffic_digraph :
+    Effic_USdigraph :
     USgraph :
     USdigraph :
     """
@@ -304,7 +304,7 @@ def Pathlen_FlowerDigraph(N,L):
     avpathlen = ( Dx + Dy + Dxy ) / Ltot
     return avpathlen
 
-def USeffic_digraph(N,L):
+def Effic_USdigraph(N,L):
     """
     Largest possible global efficiency for digraphs (ultra-short limit).
 
@@ -397,7 +397,7 @@ def Effic_FlowerDigraph(N,L):
 
     See Also
     --------
-    USeffic_digraph :
+    Effic_USdigraph :
     Effic_iDirectedRing :
     Effic_iStarDigraph :
     """
@@ -482,7 +482,7 @@ def Effic_iDirectedRing(N,L):
 
     See Also
     --------
-    USeffic_digraph :
+    Effic_USdigraph :
     Effic_iStarDigraph :
     Effic_FlowerDigraph :
     """
@@ -531,7 +531,7 @@ def Effic_iStarDigraph(N,L):
 
     See Also
     --------
-    USeffic_digraph :
+    Effic_USdigraph :
     Effic_iDirectedRing :
     Effic_FlowerDigraph :
     """
@@ -585,7 +585,7 @@ def ULpathleng_graph(N,L):
 
     See Also
     --------
-    ULeffic_graph :
+    Effic_ULgraph :
     ULgraph :
     ULdigraph :
     """
@@ -613,7 +613,7 @@ def ULpathleng_graph(N,L):
 
     return avpathlen
 
-def ULeffic_graph(N,L, connected=True):
+def Effic_ULgraph(N,L, connected=True):
     """
     Smallest possible efficiency for graphs (ultra-long limit).
 
@@ -655,9 +655,9 @@ def ULeffic_graph(N,L, connected=True):
     --------
     USgraph :
     ULgraph :
-    USpathlen_graph :
-    USeffic_graph :
-    ULeffic_graph :
+    Pathlen_USgraph :
+    Effic_USgraph :
+    Effic_ULgraph :
     """
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
@@ -696,7 +696,7 @@ def ULeffic_graph(N,L, connected=True):
 
 
 ## DIRECTED GRAPHS ____________________________________________________________
-def ULpathlen_digraph(N,L):
+def Pathlen_ULdigraph(N,L):
     """
     Longest possible pathlength for strongly connected digraphs (ultra-long limit).
 
@@ -726,9 +726,9 @@ def ULpathlen_digraph(N,L):
 
     See Also
     --------
-    ULpathlen_digraph_Range1_MBS :
-    ULpathlen_digraph_Range1_Approx :
-    ULpathlen_digraph_Range2 :
+    Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Range2 :
     """
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
@@ -744,17 +744,17 @@ def ULpathlen_digraph(N,L):
         avpathlen = np.inf
     elif L < Linterm:
         # Number of arcs below the transition. Provide approximated result
-        avpathlen = ULpathlen_digraph_Range1_Approx(N,L)
+        avpathlen = Pathlen_ULdigraph_Range1_Approx(N,L)
     elif L == Linterm:
         # Number of arcs at the transition.
         avpathlen = float(N+4) / 6
     else:
         # Number of arcs above the transition (densest regime).
-        avpathlen = ULpathlen_digraph_Range2(N,L)
+        avpathlen = Pathlen_ULdigraph_Range2(N,L)
 
     return avpathlen
 
-def ULpathlen_digraph_Range1_MBS(N,M):
+def Pathlen_ULdigraph_Range1_MBS(N,M):
     """
     Longest possible pathlength of a strongly connected digraphs containing an
     M-Backwards subgraph (ultra-long limit).
@@ -785,10 +785,10 @@ def ULpathlen_digraph_Range1_MBS(N,M):
 
     See Also
     --------
-    ULpathlen_digraph :
-    ULpathlen_digraph_Range1_Approx :
-    ULpathlen_digraph_Intermediate :
-    ULpathlen_digraph_Range2 :
+    Pathlen_ULdigraph :
+    Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Intermediate :
+    Pathlen_ULdigraph_Range2 :
     """
 
     # 0) SECURITY CHECK
@@ -805,7 +805,7 @@ def ULpathlen_digraph_Range1_MBS(N,M):
     avpathlen = term1 - term2 * term3
     return avpathlen
 
-def ULpathlen_digraph_Range1_Approx(N,L):
+def Pathlen_ULdigraph_Range1_Approx(N,L):
     """
     Longest possible pathlength for a strongly connected digraph (ultra-long
     limit, approximation).
@@ -835,10 +835,10 @@ def ULpathlen_digraph_Range1_Approx(N,L):
 
     See Also
     --------
-    ULpathlen_digraph :
-    ULpathlen_digraph_Range1_MBS :
-    ULpathlen_digraph_Intermediate :
-    ULpathlen_digraph_Range2 :
+    Pathlen_ULdigraph :
+    Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Intermediate :
+    Pathlen_ULdigraph_Range2 :
     """
     # 0) Security checks
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
@@ -857,7 +857,7 @@ def ULpathlen_digraph_Range1_Approx(N,L):
     avpathlen = term1 - term2 + term3
     return avpathlen
 
-def ULpathlen_digraph_Intermediate(N):
+def Pathlen_ULdigraph_Intermediate(N):
     """
     Largest possible pathlength for a digraph with L = (N-1) + 1/2 N(N-1) arcs.
 
@@ -882,10 +882,10 @@ def ULpathlen_digraph_Intermediate(N):
 
     See Also
     --------
-    ULpathlen_digraph :
-    ULpathlen_digraph_Range1_MBS :
-    ULpathlen_digraph_Range1_Approx :
-    ULpathlen_digraph_Range2 :
+    Pathlen_ULdigraph :
+    Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Range2 :
     """
 
     # 0) SECURITY CHECK
@@ -896,7 +896,7 @@ def ULpathlen_digraph_Intermediate(N):
 
     return avpathlen
 
-def ULpathlen_digraph_Range2(N,L):
+def Pathlen_ULdigraph_Range2(N,L):
     """
     Longest possible pathlength of a strongly connected digraph (ultra-long limit).
     Valid in the range when L >= (N-1) + 1/2 N(N-1), or density >= 1/2 + 1/N.
@@ -923,10 +923,10 @@ def ULpathlen_digraph_Range2(N,L):
 
     See Also
     --------
-    ULpathlen_digraph :
-    ULpathlen_digraph_Range1_MBS :
-    ULpathlen_digraph_Range1_Approx :
-    ULpathlen_digraph_Intermediate :
+    Pathlen_ULdigraph :
+    Pathlen_ULdigraph_Range1_MBS :
+    Pathlen_ULdigraph_Range1_Approx :
+    Pathlen_ULdigraph_Intermediate :
     """
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
@@ -957,7 +957,7 @@ def ULpathlen_digraph_Range2(N,L):
     avpathlen = term1 - term2 + term3
     return avpathlen
 
-def ULeffic_digraph_Disconnected(N,L):
+def Effic_ULdigraph_Disconnected(N,L):
     """
     Smallest possible efficiency of a digraph that is not strongly connected.
 
@@ -989,7 +989,7 @@ def ULeffic_digraph_Disconnected(N,L):
 
     See Also
     --------
-    ULpathlen_digraph :
+    Pathlen_ULdigraph :
     """
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
