@@ -25,7 +25,16 @@ estimation of the ultra-long boundaries for directed graphs. We will:
 2. Numerically compute their pathlength and efficiency,
 3. Analytically estimate their pathlength and efficiency, and
 4. Compare the results.
+
+PathLims works as an stand-alone package. For simplicity, however, this example
+require that the pyGAlib package is installed for the manipulation, analysis and
+generation of (di)graphs. pyGAlib can be installed from the Python Package Index
+using `pip`. In a terminal, simply type:
+    $ pip install galib
+
+See further information in https://github.com/gorkazl/pyGAlib
 """
+
 from __future__ import division, print_function, absolute_import
 
 # Standard library imports
@@ -35,30 +44,24 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
+import galib, galib.metrics_numba
 # Local imports
 import pathlims
-from pathlims.limits import ( Pathlen_ULdigraph_Range1_MBS,
-                            Pathlen_ULdigraph_Range1_Approx,
-                            Pathlen_ULdigraph_Intermediate,
-                            Pathlen_ULdigraph_Range2,
-                            Effic_ULdigraph_Range1_MBS,
-                            Effic_ULdigraph_Intermediate,
-                            Effic_ULdigraph_Disconnected )
-from pathlims.generators import (ULdigraph_Connected_Range1_MBS,
-                            ULdigraph_Connected_Intermediate,
-                            ULdigraph_Connected_Range2,
-                            ULdigraph_Disconnected_Range1,
-                            ULdigraph_Disconnected_Range2 )
-from pathlims.helpers import FloydWarshall
+import pathlims.limits as lims
+import pathlims.generators as gens
 
 
 ################################################################################
 # 0) PREPARE FOR THE CALCULATIONS
 # Basic properties of the graphs.
-N = 10
+N = 20
 Lmax = int( N*(N-1) )
 Llist = np.arange(Lmax+1)
 nL = len(Llist)
+
+# Print some feedback
+print( '\nNetwork size, N:', N )
+
 
 # 1) DO THE CALCULATIONS -- CONNECTED GRAPHS
 time1 = timer()
@@ -78,32 +81,34 @@ pathlen_th1 = np.zeros(nM, np.float)
 effic_num_con1 = np.zeros(nM, np.float)
 effic_th_con1 = np.zeros(nM, np.float)
 
+print( 'Calculating results for CONNECTED digraphs ...' )
+print( 'Range 1:  L < 1/2 N(N-1) + (N-1)' )
 for counter,M in enumerate(Mlist1):
     LM = int( N + 0.5*M*(M-1) )
     Llist1[counter] = LM
 
     # Generate the connected ultra-long graph and compute distance / efficiency
-    net = ULdigraph_Connected_Range1_MBS(N,M)
-    dij = FloydWarshall(net)
+    net = gens.ULdigraph_Connected_Range1_MBS(N,M)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     pathlen_num1[counter] = ( dij.sum() - dij.trace() ) / Lmax
     eij = 1./dij
     effic_num_con1[counter] = ( eij.sum() - eij.trace() ) / Lmax
 
     # 1.2) Calculate the results analitically
-    pathlen_th1[counter] = Pathlen_ULdigraph_Range1_MBS(N,M)
-    effic_th_con1[counter] = Effic_ULdigraph_Range1_MBS(N,M)
+    pathlen_th1[counter] = lims.Pathlen_ULdigraph_Range1_MBS(N,M)
+    effic_th_con1[counter] = lims.Effic_ULdigraph_Range1_MBS(N,M)
 
 # 1.2) Calculate the results for the intermediate configuration, when
 # L = (N-1) + 1/2 N(N-1)
 Linter = int( N-1 + 0.5*N*(N-1) )
-net = ULdigraph_Connected_Intermediate(N)
-dij = FloydWarshall(net)
+net = gens.ULdigraph_Connected_Intermediate(N)
+dij = galib.metrics_numba.FloydWarshall_Numba(net)
 eij = 1./dij
 pathlen_num_inter = ( dij.sum() - dij.trace() ) / Lmax
 effic_num_inter = ( eij.sum() - eij.trace() ) / Lmax
 
-pathlen_th_inter = Pathlen_ULdigraph_Intermediate(N)
-effic_th_inter = Effic_ULdigraph_Intermediate(N)
+pathlen_th_inter = lims.Pathlen_ULdigraph_Intermediate(N)
+effic_th_inter = lims.Effic_ULdigraph_Intermediate(N)
 
 # 1.3) Calculate results for the range-2, when L > (N-1) + 1/2 N(N-1)
 L2min = int( (N+1) + 0.5*N*(N-1) )
@@ -114,16 +119,17 @@ pathlen_th2 = np.zeros(nL2, np.float)
 effic_num_con2 = np.zeros(nL2, np.float)
 effic_th_con2 = np.zeros(nL2, np.float)
 
+print( 'Range 2:  L > 1/2 N(N-1) + (N-1)' )
 for counter,L in enumerate(Llist2):
     # Generate the connected ultra-long graph and compute distance / efficiency
-    net = ULdigraph_Connected_Range2(N,L)
-    dij = FloydWarshall(net)
+    net = gens.ULdigraph_Connected_Range2(N,L)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     pathlen_num2[counter] = ( dij.sum() - dij.trace() ) / Lmax
     eij = 1./dij
     effic_num_con2[counter] = ( eij.sum() - eij.trace() ) / Lmax
 
     # Calculate the results analitically
-    pathlen_th2[counter] = Pathlen_ULdigraph_Range2(N,L)
+    pathlen_th2[counter] = lims.Pathlen_ULdigraph_Range2(N,L)
     #effic_th_con2[L] = Effic_ULgraph(N,L, connected=True)
 
 
@@ -135,15 +141,17 @@ nL1 = len(Llist_disco1)
 effic_num_disco1 = np.zeros(nL1, np.float)
 effic_th_disco1 = np.zeros(nL1, np.float)
 
+print( 'Calculating results for DISCONNECTED digraphs ...' )
+print( 'Range 1: L < 1/2 N(N-1)' )
 for L in range(nL1):
     # Generate the connected ultra-long graph and compute distance / efficiency
-    net = ULdigraph_Disconnected_Range1(N,L)
-    dij = FloydWarshall(net)
+    net = gens.ULdigraph_Disconnected_Range1(N,L)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     eij = 1./dij
     effic_num_disco1[L] = ( eij.sum() - eij.trace() ) / Lmax
 
     # Calculate the results analitically
-    effic_th_disco1[L] = Effic_ULdigraph_Disconnected(N,L)
+    effic_th_disco1[L] = lims.Effic_ULdigraph_Disconnected(N,L)
 
 # 2.2) Calculate results for the range-1, when L >= 1/2 N(N-1)
 # In this case, we provide the results only for given values of L such that
@@ -156,25 +164,27 @@ Llist_disco2 = np.zeros(nM, np.uint)
 effic_num_disco2 = np.zeros(nM, np.float)
 effic_th_disco2 = np.zeros(nM, np.float)
 
+print( 'Range 2: L > 1/2 N(N-1)' )
 for counter,M in enumerate(Mlist):
     # Get number of edges in an M-complete graph of order M
     LM = Lhalf + int( 0.5*M*(M-1) )
     Llist_disco2[counter] = LM
 
     # Generate the M-complete graph and compute its efficiency
-    net = ULdigraph_Disconnected_Range2(N,M)
-    dij = FloydWarshall(net)
+    net = gens.ULdigraph_Disconnected_Range2(N,M)
+    dij = galib.metrics_numba.FloydWarshall_Numba(net)
     eij = 1./dij
     effic_num_disco2[counter] = ( eij.sum() - eij.trace() ) / Lmax
 
     # Calculate the results analitically
-    effic_th_disco2[counter] = Effic_ULdigraph_Disconnected(N,LM)
+    effic_th_disco2[counter] = lims.Effic_ULdigraph_Disconnected(N,LM)
 
 time2 = timer()
 print(time2 - time1, 'seconds')
 
 
 # 3) SUMMARISE THE RESULTS
+print( '\nSUMMARY' )
 diff_pathlen1 = abs(pathlen_num1 - pathlen_th1)
 error_pathlen1 = diff_pathlen1.sum()
 print('Pathlength (Range-1). Total error:', error_pathlen1 )

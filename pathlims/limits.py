@@ -16,45 +16,59 @@ ANALYTIC BOUNDARIES OF PATHLENGTH AND EFFICIENCY
 This module contains functions to calculate, analytically, the upper and the
 lower limits for the pathlength and efficiency of networks with arbitrary
 number of nodes N and number of links L. Results are available for
-graphs and digraphs.
+graphs and digraphs, in separate functions.
 
 ULTRA-SHORT LIMITS
 ==================
 Pathlen_USgraph
-    Shortest possible pathlength of a connected graph.
+    Shortest possible average pathlength for graphs (ultra-short limit).
 Effic_USgraph
-    Largest possible efficiency of an undirected graph.
+    Largest possible global efficiency for graphs (ultra-short limit).
+
 Pathlen_USdigraph
-    Shortest possible pathlength of a strongly connected directed graph.
+    Shortest possible average pathlength for directed graphs (ultra-short limit).
 Pathlen_FlowerDigraph
-    Average pathlength of a flower digraph (ultra-short limit)
+    Average pathlength of a flower digraph (ultra-short limit).
 Effic_USdigraph
-    Largest possible efficiency of a directed graph.
+    Largest possible global efficiency for digraphs (ultra-short limit).
 Effic_FlowerDigraph
-    Calculates the efficiency of a flower digraph (ultra-short limit)
+    Global efficiency of a flower digraph (ultra-short limit).
 Effic_iDirectedRing
-    Calculates efficiency of an incomplete directed ring (ultra-short limit)
+    Global efficiency of an incomplete directed ring (ultra-short limit).
 Effic_iStarDigraph
-    Calculates efficiency of an incomplete star digraph (ultra-short limit)
+    Global efficiency of an incomplete star digraph (ultra-short limit).
 
 ULTRA-LONG LIMITS
 =================
 Pathlen_ULgraph
-    Longest possible pathlength of a connected graph.
+    Longest possible average pathlength for graphs (ultra-long limit).
 Effic_ULgraph
-    Smallest possible efficiency of an undirected graph.
-Pathlen_ULdigraph
-    Longest possible pathlength of a strongly connected directed graph.
-Pathlen_ULdigraph_Range1_MBS
-    Pathlength of an UL digraph containing an M-Backwards subgraph.
-Pathlen_ULdigraph_Range1_Approx
-    Longest possible pathlength for a strongly connected directed graph.
-Pathlen_ULdigraph_Range2
-    Longest possible pathlength of a strongly connected directed graph.
-Effic_ULdigraph_Disconnected
-    Smallest possible efficiency of an directed graph.
+    Smallest possible efficiency for graphs (ultra-long limit).
 
-...moduleauthor:: Gorka Zamora-Lopez <galib@zamora-lopez.xyz>
+Pathlen_ULdigraph
+    Longest possible pathlength for strongly connected digraphs (ultra-long limit).
+Pathlen_ULdigraph_Range1_MBS
+    Longest possible pathlength of a strongly connected digraphs containing an
+    M-Backwards subgraph (ultra-long limit).
+    Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
+Pathlen_ULdigraph_Range1_Approx
+    Longest possible pathlength for a strongly connected digraph (ultra-long
+    limit, approximation).
+    Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
+Pathlen_ULdigraph_Intermediate
+    Largest possible pathlength for a digraph with L = (N-1) + 1/2 N(N-1) arcs.
+Pathlen_ULdigraph_Range2
+    Longest possible pathlength for strongly connected digraphs (ultra-long limit).
+    Valid in the range when L >= (N-1) + 1/2 N(N-1), or density >= 1/2 + 1/N.
+Effic_ULdigraph_Range1_MBS:
+    Smallest possible efficiency for strongly connected digraphs (ultra-long limit)
+    containing an M-Backwards subgraph.
+    Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
+Effic_ULdigraph_Intermediate
+    Smallest possible efficiency for strongly connected digraphs (ultra-long limit)
+    containing exactly L = (N-1) + 1/2 N(N-1) arcs, or density = 1/2 + 1/N.
+Effic_ULdigraph_Disconnected
+    Smallest possible efficiency of a digraph that is not strongly connected.
 
 """
 from __future__ import division, print_function, absolute_import
@@ -71,7 +85,8 @@ EMconstant = 0.57721566490153286060
 ## ULTRA-SHORT LIMIT ##########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
 def Pathlen_USgraph(N,L):
-    """Shortest possible pathlength of a connected graph.
+    """
+    Shortest possible average pathlength for graphs (ultra-short limit).
 
     Calculates the shortest possible pathlength a graph of arbitrary number of
     nodes N and number of undirected edges L could possibly have. In case that
@@ -80,8 +95,7 @@ def Pathlen_USgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
     For the connected case, see also:
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
@@ -124,7 +138,8 @@ def Pathlen_USgraph(N,L):
     return avpathlen
 
 def Effic_USgraph(N,L):
-    """Largest possible efficiency of an undirected graph.
+    """
+    Largest possible global efficiency for graphs (ultra-short limit).
 
     Calculates the largest possible efficiency that a graph of arbitrary number
     of nodes N and number of undirected edges L could possibly have. Networks
@@ -134,8 +149,7 @@ def Effic_USgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
     For the connected case, see also
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
@@ -176,7 +190,8 @@ def Effic_USgraph(N,L):
 
 ## DIRECTED GRAPHS __________________________________________________________
 def Pathlen_USdigraph(N,L):
-    """Shortest possible pathlength of a strongly connected directed graph.
+    """
+    Shortest possible average pathlength for directed graphs (ultra-short limit).
 
     Calculates the shortest possible pathlength a connected directed graph of
     arbitrary number of nodes N and number of directed arcs L could possibly
@@ -184,8 +199,7 @@ def Pathlen_USdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -226,7 +240,8 @@ def Pathlen_USdigraph(N,L):
     return avpathlen
 
 def Pathlen_FlowerDigraph(N,L):
-    """Average pathlength of a flower digraph (ultra-short limit)
+    """
+    Average pathlength of a flower digraph (ultra-short limit).
 
     When the number of arcs is in the range N < L < 2(N-1), strongly connected
     digraphs exist but they are not dense enough for the ultra-short theorem to
@@ -236,8 +251,7 @@ def Pathlen_FlowerDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -298,7 +312,8 @@ def Pathlen_FlowerDigraph(N,L):
     return avpathlen
 
 def Effic_USdigraph(N,L):
-    """Largest possible efficiency of a directed graph.
+    """
+    Largest possible global efficiency for digraphs (ultra-short limit).
 
     Calculates the largest possible efficiency that a directed graph of
     arbitrary number of nodes N and number of directed arcs L could possibly
@@ -314,8 +329,7 @@ def Effic_USdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -362,7 +376,8 @@ def Effic_USdigraph(N,L):
     return efficiency
 
 def Effic_FlowerDigraph(N,L):
-    """Calculates the efficiency of a flower digraph (ultra-short limit)
+    """
+    Global efficiency of a flower digraph (ultra-short limit).
 
     When the number of arcs is in the range N <= L <= 2(N-1), strongly connected
     digraphs exist but they are not dense enough for the ultra-short theorem to
@@ -372,8 +387,7 @@ def Effic_FlowerDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -395,8 +409,8 @@ def Effic_FlowerDigraph(N,L):
     Effic_iStarDigraph :
     """
     # 0) SECURITY CHECKS
-    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
-    if L < N:       raise ValueError( "L out of range, min(L) = N" )
+    if N < 2:   raise ValueError( "Network needs at least two nodes, N > 1" )
+    if L < N:   raise ValueError( "L out of range, min(L) = N" )
     if L > 2*(N-1): raise ValueError( "L out of range, max(L) = 2*(N-1)" )
 
     def Ix(x):
@@ -404,8 +418,10 @@ def Effic_FlowerDigraph(N,L):
         return result
 
     def Jxy(x,y):
-        result = (x+y-1) * scipy.special.psi(x+y) - x*scipy.special.psi(x) - \
-                y*scipy.special.psi(y) - (EMconstant+1)
+        psi_xy = scipy.special.psi(x+y)
+        psi_x = scipy.special.psi(x)
+        psi_y = scipy.special.psi(y)
+        result = (x+y-1) * psi_xy - x * psi_x - y * psi_y - (EMconstant+1)
         return result
 
     # 1) CALCULATE THE NUMBER OF CYCLES AND THEIR SIZES
@@ -445,7 +461,8 @@ def Effic_FlowerDigraph(N,L):
     return efficiency
 
 def Effic_iDirectedRing(N,L):
-    """Calculates efficiency of an incomplete directed ring (ultra-short limit)
+    """
+    Global efficiency of an incomplete directed ring (ultra-short limit).
 
     When the number of arcs is L < N, digraphs are necessarily disconnected.
     digraphs exist but they are not dense enough for the ultra-short theorem to
@@ -456,8 +473,7 @@ def Effic_iDirectedRing(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -495,7 +511,8 @@ def Effic_iDirectedRing(N,L):
     return efficiency
 
 def Effic_iStarDigraph(N,L):
-    """Calculates efficiency of an incomplete star digraph (ultra-short limit)
+    """
+    Global efficiency of an incomplete star digraph (ultra-short limit).
 
     When the number of arcs is L < 2(N-1), three models compete for largest
     efficiency. Incomplete star digraphs consist of a star graph of size N' < N,
@@ -505,8 +522,7 @@ def Effic_iStarDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -545,7 +561,8 @@ def Effic_iStarDigraph(N,L):
 ## ULTRA-LONG LIMIT ###########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
 def Pathlen_ULgraph(N,L):
-    """Longest possible pathlength of a connected graph.
+    """
+    Longest possible average pathlength for graphs (ultra-long limit).
 
     Calculates the longest possible pathlength a graph of arbitrary number of
     nodes N and number of undirected edges L could possibly have. In case that
@@ -554,14 +571,12 @@ def Pathlen_ULgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
     L. Gulyas, G. Horvath, T. Cseri & G. Kampis *An estimation of the
     shortest and largest average path length in graphs of given density*
     arXiv:1101.2549 (2011).
-
 
     Parameters
     ----------
@@ -606,7 +621,8 @@ def Pathlen_ULgraph(N,L):
     return avpathlen
 
 def Effic_ULgraph(N,L, connected=True):
-    """Smallest possible efficiency of an undirected graph.
+    """
+    Smallest possible efficiency for graphs (ultra-long limit).
 
     Calculates the largest possible efficiency that a graph of arbitrary number
     of nodes N and number of undirected edges L could possibly have. The outcome
@@ -622,8 +638,7 @@ def Effic_ULgraph(N,L, connected=True):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
 
@@ -689,7 +704,8 @@ def Effic_ULgraph(N,L, connected=True):
 
 ## DIRECTED GRAPHS ____________________________________________________________
 def Pathlen_ULdigraph(N,L):
-    """Longest possible pathlength of a strongly connected directed graph.
+    """
+    Longest possible pathlength for strongly connected digraphs (ultra-long limit).
 
     Calculates the longest possible pathlength a connected directed graph of
     arbitrary number of nodes N and number of directed arcs L could possibly
@@ -701,8 +717,7 @@ def Pathlen_ULdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -747,7 +762,10 @@ def Pathlen_ULdigraph(N,L):
     return avpathlen
 
 def Pathlen_ULdigraph_Range1_MBS(N,M):
-    """Pathlength of an UL digraph containing an M-Backwards subgraph.
+    """
+    Longest possible pathlength of a strongly connected digraphs containing an
+    M-Backwards subgraph (ultra-long limit).
+    Valid in the range when L <= (N-1) + 1/2 Lo, or density <= 1/2 + 1/N.
 
     Calculates the pathlength of a digraph consisting of a directed ring and
     and an M-backwards subgraph. An M-BS is a set of arcs where the first M
@@ -757,8 +775,7 @@ def Pathlen_ULdigraph_Range1_MBS(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -796,7 +813,10 @@ def Pathlen_ULdigraph_Range1_MBS(N,M):
     return avpathlen
 
 def Pathlen_ULdigraph_Range1_Approx(N,L):
-    """Longest possible pathlength for a strongly connected directed graph.
+    """
+    Longest possible pathlength for a strongly connected digraph (ultra-long
+    limit, approximation).
+    Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
 
     The solutions leading to digraphs with longest pathlength are splitted at
     L' = 1/2 N(N-1) + (N-1). In the range N <= L <= L', exact solution is only
@@ -806,8 +826,7 @@ def Pathlen_ULdigraph_Range1_Approx(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -846,7 +865,8 @@ def Pathlen_ULdigraph_Range1_Approx(N,L):
     return avpathlen
 
 def Pathlen_ULdigraph_Intermediate(N):
-    """Pathlength of an UL digraph with L = (N-1) + 1/2 N(N-1) arcs.
+    """
+    Largest possible pathlength for a digraph with L = (N-1) + 1/2 N(N-1) arcs.
 
     Calculates the pathlength of a digraph consisting of the superposition of
     a directed ring with a complete directed acyclic graph whose arcs are
@@ -855,8 +875,7 @@ def Pathlen_ULdigraph_Intermediate(N):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -885,7 +904,9 @@ def Pathlen_ULdigraph_Intermediate(N):
     return avpathlen
 
 def Pathlen_ULdigraph_Range2(N,L):
-    """Longest possible pathlength of a strongly connected directed graph.
+    """
+    Longest possible pathlength of a strongly connected digraph (ultra-long limit).
+    Valid in the range when L >= (N-1) + 1/2 N(N-1), or density >= 1/2 + 1/N.
 
     Calculates the longest possible pathlength a connected directed graph of
     arbitrary number of nodes N and number of directed arcs L could possibly
@@ -893,8 +914,7 @@ def Pathlen_ULdigraph_Range2(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -945,7 +965,10 @@ def Pathlen_ULdigraph_Range2(N,L):
     return avpathlen
 
 def Effic_ULdigraph_Range1_MBS(N,M):
-    """Efficiency of an UL digraph containing an M-Backwards subgraph.
+    """
+    Smallest possible efficiency for strongly connected digraphs (ultra-long limit)
+    containing an M-Backwards subgraph.
+    Valid in the range when L <= (N-1) + 1/2 N(N-1), or density <= 1/2 + 1/N.
 
     Calculates the efficiency of a digraph consisting of a directed ring and
     and an M-backwards subgraph. An M-BS is a set of arcs where the first M
@@ -955,8 +978,7 @@ def Effic_ULdigraph_Range1_MBS(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -995,7 +1017,9 @@ def Effic_ULdigraph_Range1_MBS(N,M):
     return efficiency
 
 def Effic_ULdigraph_Intermediate(N):
-    """Efficiency of a connected UL digraph with L = (N-1) + 1/2 N(N-1) arcs.
+    """
+    Smallest possible efficiency for strongly connected digraphs (ultra-long limit)
+    containing exactly L = (N-1) + 1/2 N(N-1) arcs, or density = 1/2 + 1/N.
 
     Calculates the efficiency of a digraph consisting of the superposition of
     a directed ring with a complete directed acyclic graph whose arcs are
@@ -1004,8 +1028,7 @@ def Effic_ULdigraph_Intermediate(N):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1022,7 +1045,6 @@ def Effic_ULdigraph_Intermediate(N):
     Effic_ULdigraph_Range1_MBS :
     Effic_ULdigraph_Range2 :
     """
-
     # 0) SECURITY CHECKS
     if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
 
@@ -1038,7 +1060,8 @@ def Effic_ULdigraph_Intermediate(N):
     return efficiency
 
 def Effic_ULdigraph_Disconnected(N,L):
-    """Smallest possible efficiency of an directed graph.
+    """
+    Smallest possible efficiency of a digraph that is not strongly connected.
 
     Calculates the smallest possible efficiency that a digraph of arbitrary
     number of nodes N and number of directed arcs L could possibly have.
@@ -1052,8 +1075,7 @@ def Effic_ULdigraph_Disconnected(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-    arXiv:1810.12825 (2018).
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1067,7 +1089,6 @@ def Effic_ULdigraph_Disconnected(N,L):
     efficiency : float
         The smallest efficiency a digraph could take.
 
-
     See Also
     --------
     Pathlen_ULdigraph :
@@ -1080,7 +1101,6 @@ def Effic_ULdigraph_Disconnected(N,L):
 
     # 1) CALCULATE THE EFFICIENCY
     efficiency = float(L) / Ltot
-
     return efficiency
 
 

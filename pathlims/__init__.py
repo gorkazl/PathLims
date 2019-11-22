@@ -38,8 +38,7 @@ For a complete description of the boundaries for the average pathlength and
 global efficiency, and for a illustration of ultra-short / ultra-long network
 generation, see:
 
-- G. Zamora-López & R. Brasselet "Sizing the length of complex networks"
-arXiv:1810.12825 (2018). https://arxiv.org/1810.12825.
+- G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
 
 Please cite the above reference if you use PathLims. Results for some special
 cases (connected and undirected graphs) can also be found in:
@@ -200,15 +199,14 @@ from __future__ import absolute_import
 
 from . import limits
 from . import generators
-# from . import helpers
 
 
 __author__ = "Gorka Zamora-Lopez"
 __email__ = "galib@Zamora-Lopez.xyz"
 __copyright__ = "Copyright 2018-2019"
 __license__ = "Apache License version 2.0"
-__version__ = "1.0.0b2"
-__update__="15/06/2019"
+__version__ = "1.0.0"
+__update__="22/11/2019"
 
 
 
