@@ -199,9 +199,8 @@ Example scripts have been added and some datasets:
 - Four scripts (*UltraLong_Digraphs.py*, *UltraLong_Graphs.py*, *UltraShort_Digraphs.py* and *UltraShort_Graphs.py*) in which ultra-long and ultra-short networks are generated, their pathlength and efficiencies  are numerically calculated, and compared to the theoretical values for corroboration. 
 
 ##### December 22, 2018
-Version 1.0.0 of PathLims has been released.
+Version 1.0.0b2 (beta) of PathLims has been uploaded.
  
-See the file *CHANGES.md* for a complete history of changes.
 
 
 
