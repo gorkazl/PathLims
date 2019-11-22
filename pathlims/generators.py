@@ -33,6 +33,7 @@ USgraph_Random
     Generates a connected ultra-short graph, random case.
 USgraph_RichClub
     Generates a connected ultra-short graph, rich-club configuration.
+
 USdigraph
     Generates an ultra-short directed graph of size N and number of edges L.
 USdigraph_iDirectedRing
@@ -52,6 +53,7 @@ ULgraph_Connected
     Generates a connected ultra-long graph of specified N and L.
 ULgraph_Disconnected_Mcomplete
     Generates an M-complete graph of specified N and order M.
+
 ULdigraph_Connected_Range1_MBS
     Generates a connected ultra-long directed graph of order M.
 ULdigraph_Connected_Range2
@@ -61,8 +63,6 @@ ULdigraph_Disconnected_Range1
 ULdigraph_Disconnected_Range2
     Generates a digraph with smallest possible efficiency, when L >= 1/2 N(N-1)
     and order M.
-
-...moduleauthor:: Gorka Zamora-Lopez <galib@zamora-lopez.xyz>
 
 """
 from __future__ import division, print_function, absolute_import
@@ -76,7 +76,8 @@ from .limits import Effic_iDirectedRing, Effic_iStarDigraph, Effic_FlowerDigraph
 ## ULTRA-SHORT NETWORKS ########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
 def USgraph(N,L, uscase='Random', reportdisco=False):
-    """Generates an ultra-short graph of size N and number of edges L.
+    """
+    Generates an ultra-short graph of size N and number of edges L.
 
     - If L < N-1, returns a disconnected star graph, with infinite pathlength
     but largest efficiency possible.
@@ -140,7 +141,8 @@ def USgraph(N,L, uscase='Random', reportdisco=False):
     return adjmatrix
 
 def USgraph_Disconnected(N,L):
-    """Generates a disconnected graph with largest possible efficiency.
+    """
+    Generates a disconnected graph with largest possible efficiency.
 
     When L < N-1, graphs are necessarily disconnected (thus have infinite
     pathlength). This function creates a disconnected star graph, i.e, a graph
@@ -181,7 +183,8 @@ def USgraph_Disconnected(N,L):
     return adjmatrix
 
 def USgraph_Random(N,L):
-    """Generates a connected ultra-short graph, random case.
+    """
+    Generates a connected ultra-short graph, random case.
 
     Generates a graph with shortest possible pathlength (largest possible
     efficiency) by adding edges randomly to an initial star graph.
@@ -238,7 +241,8 @@ def USgraph_Random(N,L):
     return adjmatrix
 
 def USgraph_RichClub(N,L):
-    """Generates a connected ultra-short graph, rich-club case.
+    """
+    Generates a connected ultra-short graph, rich-club case.
 
     Generates a graph with shortest possible pathlength (largest possible
     efficiency) by seeding links to the initial star graph orderly, which leads
@@ -304,7 +308,8 @@ def USgraph_RichClub(N,L):
 
 ## DIRECTED GRAPHS ____________________________________________________________
 def USdigraph(N,L, onlyconnected=True, uscase='Random', reportdisco=False):
-    """Generates an ultra-short directed graph of size N and number of edges L.
+    """
+    Generates an ultra-short directed graph of size N and number of edges L.
 
     Ultra-short digraph generation involves up to five different digraph models.
     This function sorts the models based on two optional parameters
@@ -417,7 +422,8 @@ def USdigraph(N,L, onlyconnected=True, uscase='Random', reportdisco=False):
     return adjmatrix
 
 def USdigraph_iDirectedRing(N,L):
-    """Generates an incomplete directed ring.
+    """
+    Generates an incomplete directed ring.
 
     This model is restricted to the cases when L < N. An incomplete directed
     ring consists of a directed ring of size N' = L, with the remaining N - L
@@ -469,7 +475,8 @@ def USdigraph_iDirectedRing(N,L):
     return adjmatrix
 
 def USdigraph_iStarDigraph(N,L):
-    """Generates an incomplete star digraph
+    """
+    Generates an incomplete star digraph
 
     This model is restricted to L <= 2(N-1). An incomplete star digraph consists
     of a star graph of size N' = L / 2 <= N with the remaining N - N' nodes
@@ -522,7 +529,8 @@ def USdigraph_iStarDigraph(N,L):
     return adjmatrix
 
 def USdigraph_FlowerDigraph(N,L):
-    """Generates a flower digraph.
+    """
+    Generates a flower digraph.
 
     This model is restricted to the range N <= L <= 2(N-1). A flower digraph
     consists of a set of directed rings (the petals) which overlap in a single
@@ -593,7 +601,8 @@ def USdigraph_FlowerDigraph(N,L):
     return adjmatrix
 
 def USdigraph_Random(N,L):
-    """Generates a connected ultra-short digraph, random configuration.
+    """
+    Generates a connected ultra-short digraph, random configuration.
 
     Generates a digraph with shortest possible pathlength (largest possible
     efficiency) by adding arcs randomly to an initial star graph.
@@ -651,7 +660,8 @@ def USdigraph_Random(N,L):
     return adjmatrix
 
 def USdigraph_RichClub(N,L):
-    """Generates a connected ultra-short digraph, rich-club configuration.
+    """
+    Generates a connected ultra-short digraph, rich-club configuration.
 
     Generates a digraph with shortest possible pathlength (largest possible
     efficiency) by seeding links to an initial star graph orderly, which leads
@@ -725,7 +735,8 @@ def USdigraph_RichClub(N,L):
 ## ULTRA-LONG NETWORKS ########################################################
 ## UNDIRECTED GRAPHS __________________________________________________________
 def ULgraph_Connected(N,L):
-    """Generates a connected ultra-long graph of specified N and L.
+    """
+    Generates a connected ultra-long graph of specified N and L.
 
     This function returns CONNECTED ultra-long graphs, which consist of an
     orderly addition of edges to an initial path graph (or line graph).
@@ -788,7 +799,8 @@ def ULgraph_Connected(N,L):
     return adjmatrix
 
 def ULgraph_Disconnected_Mcomplete(N,M):
-    """Generates an M-complete graph of specified N and order M.
+    """
+    Generates an M-complete graph of specified N and order M.
 
     In the case of the ultra-long boundary, the networks with smallest efficiency
     are always disconnected but such configurations are not always unique.
@@ -836,7 +848,8 @@ def ULgraph_Disconnected_Mcomplete(N,M):
 
 ## DIRECTED GRAPHS ____________________________________________________________
 def ULdigraph_Connected_Range1_MBS(N,M):
-    """Generates a connected ultra-long directed graph of order M.
+    """
+    Generates a connected ultra-long directed graph of order M.
 
     The generation of strongly connected ultra-long digraphs undergoes a
     transition when L = (N-1) + 1/2 N(N-1), or density rho = 1/2 + 1/N.
@@ -892,7 +905,8 @@ def ULdigraph_Connected_Range1_MBS(N,M):
     return adjmatrix
 
 def ULdigraph_Connected_Intermediate(N):
-    """Connected ultra-long directed graph with L = (N-1) + 1/2 N(N-1) arcs.
+    """
+    Connected ultra-long directed graph with L = (N-1) + 1/2 N(N-1) arcs.
 
     The generation of strongly connected ultra-long digraphs undergoes a
     transition when L = (N-1) + 1/2 N(N-1), or density rho = 1/2 + 1/N.
@@ -937,7 +951,8 @@ def ULdigraph_Connected_Intermediate(N):
     return adjmatrix
 
 def ULdigraph_Connected_Range2(N,L):
-    """Generates a connected ultra-long digraph of density rho >= 1/2 + 1/N.
+    """
+    Generates a connected ultra-long digraph of density rho >= 1/2 + 1/N.
 
     The generation of strongly connected ultra-long digraphs undergoes a
     transition when L = (N-1) + 1/2 N(N-1), or density rho = 1/2 + 1/N.
@@ -999,7 +1014,8 @@ def ULdigraph_Connected_Range2(N,L):
     return adjmatrix
 
 def ULdigraph_Disconnected_Range1(N,L):
-    """Generates a digraph with smallest possible efficiency, L <= 1/2 N(N-1).
+    """
+    Generates a digraph with smallest possible efficiency, L <= 1/2 N(N-1).
 
     Disconected digraphs with largest possible efficiency are represented by
     two different models. Both lead to disconnected digraphs.
@@ -1057,7 +1073,8 @@ def ULdigraph_Disconnected_Range1(N,L):
     return adjmatrix
 
 def ULdigraph_Disconnected_Range2(N,M):
-    """Generates a digraph with smallest possible efficiency, when L >= 1/2 N(N-1)
+    """
+    Generates a digraph with smallest possible efficiency, when L >= 1/2 N(N-1)
     and order M.
 
     Disconected digraphs with largest possible efficiency are represented by
