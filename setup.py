@@ -8,7 +8,7 @@ with open("requirements.txt") as reqs_file:
 
 setup(
     name = 'pathlims',
-    description = 'A package to study the length boundaries of complex networks.',
+    description = 'A package to study the limits of pathlength and efficiency of complex networks.',
     url = 'https://github.com/gorkazl/PathLims',
     version = '1.0.0',
     license = 'Apache License 2.0',
