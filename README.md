@@ -6,7 +6,6 @@ The package contains three modules:
 
 - *limits.py*: Analytic expressions to calulate the boundaries of average pathlength and global efficiency for networks of arbitrary size and number of links.
 - *generators.py*: Functions to create ultra-short and ultra-long networks, of arbitrary size and number of links.
-- *helpers.py*: Miscellaneous helper functionalities. Needed to run the examples.
 
 Visit the help of each module for a complete list of functions.
 
@@ -31,7 +30,7 @@ Installation of ÜathLims is simple. An existing python distribution and the [pi
 
 **- The simple installation**: PathLims is registered in [PyPI](https://pypi.org/project/pathlims/) (the Python Packages Index), therefore installation from the terminal is straight forward. `pip` will automatically take care of the  dependencies (see the *requirements.txt* file). Simply type:
 
-	$ pip install galib
+	$ pip install pathlims
 
 To confirm the installation open an interactive session and try to import the library by typing `import pathlims`.
 
@@ -193,7 +192,8 @@ limitations under the License.
 ##### November 22, 2019
 Stable version 1.0.0 checked, validated and released.
 
-PathLims has been registered in PyPI (https://pypi.org/project/pathlims/). Direct installation and version management using `pip` is now available.
+* PathLims has been registered in PyPI ([https://pypi.org/project/pathlims/](https://pypi.org/project/pathlims/)). Direct installation and version management using `pip` is now available.
+* Two Jupyter notebooks added for tutorial: *EmpiricalNets_Directed.ipynb* and *EmpiricalNets_Undirected.ipynb.*
 
 ##### December 31, 2018
 Example scripts have been added and some datasets:
