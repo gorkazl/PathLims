@@ -2,7 +2,7 @@
 
 PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays. Python 2.7 and 3.X compatible.
 
-The package contains three modules:
+The package contains two modules:
 
 - *limits.py*: Analytic expressions to calulate the boundaries of average pathlength and global efficiency for networks of arbitrary size and number of links.
 - *generators.py*: Functions to create ultra-short and ultra-long networks, of arbitrary size and number of links.
