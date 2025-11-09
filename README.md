@@ -2,7 +2,7 @@
 
 PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays.
 
-[![pypi version](https://img.shields.io/pypi/v/manimgl?logo=pypi)](https://pypi.org/project/galib/)
+[![pypi version](https://img.shields.io/pypi/v/galib?logo=pypi)](https://pypi.org/project/galib/)
  
 
 The package contains two modules:
