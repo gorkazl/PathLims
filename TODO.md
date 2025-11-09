@@ -19,7 +19,7 @@
     1. ~~Run the example scripts.~~
     2. ~~Warning and error cases.~~
 9. Update README.md file:
-    1. Add version and status indicators at the top. 
+    1. ~~Add version and status indicators at the top.~~ 
     2. ~~Revise installation instructions.~~
 
 
