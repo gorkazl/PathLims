@@ -71,12 +71,13 @@ Effic_ULdigraph_Disconnected
     Smallest possible efficiency of a digraph that is not strongly connected.
 
 """
-from __future__ import division, print_function, absolute_import
-
+# Standard library imports
 import warnings
+# Third party imports
 import numpy as np
 import numpy.random
 import scipy.special
+# Local imports
 
 # Global constants
 EMconstant = 0.57721566490153286060

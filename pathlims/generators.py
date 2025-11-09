@@ -65,11 +65,11 @@ ULdigraph_Disconnected_Range2
     and order M.
 
 """
-from __future__ import division, print_function, absolute_import
-
+# Standard library imports
+# Third party imports
 import numpy as np
 import numpy.random
-
+# Local imports
 from .limits import Effic_iDirectedRing, Effic_iStarDigraph, Effic_FlowerDigraph
 
 

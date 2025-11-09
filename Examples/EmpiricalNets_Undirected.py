@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# Copyright (c) 2018, Gorka Zamora-López and Romain Brasselet
 # <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
@@ -11,7 +11,7 @@
 #
 # REFERENCE AND CITATION
 # When using PathLims, please cite:
-# G. Zamora-Lopez & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
+# G. Zamora-López & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
 #
 
 """
@@ -33,8 +33,6 @@ using `pip`. In a terminal, simply type:
 
 See further information in https://github.com/gorkazl/pyGAlib
 """
-
-from __future__ import division, print_function
 
 # Standard library imports
 import os

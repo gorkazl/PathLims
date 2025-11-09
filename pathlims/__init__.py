@@ -195,18 +195,11 @@ You may obtain a copy of the License at
 or see the LICENSE.txt file.
 
 """
-from __future__ import absolute_import
-
 from . import limits
 from . import generators
 
 
-__author__ = "Gorka Zamora-Lopez"
-__email__ = "galib@Zamora-Lopez.xyz"
-__copyright__ = "Copyright 2018-2019"
-__license__ = "Apache License version 2.0"
-__version__ = "1.0.0"
-__update__="22/11/2019"
+__version__ = "2.0.dev0"
 
 
 
