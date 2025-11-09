@@ -10,18 +10,18 @@ setup(
     name = 'pathlims',
     description = 'A package to study the limits of pathlength and efficiency of complex networks.',
     url = 'https://github.com/gorkazl/PathLims',
-    version = '1.0.0',
-    license = 'Apache License 2.0',
+    version = '2.0.dev0',
+    license = 'Apache-2.0',
 
-    author = 'Gorka Zamora-Lopez',
-    author_email = 'galib@Zamora-Lopez.xyz',
+    author = 'Gorka Zamora-López',
+    author_email = 'gorka@Zamora-Lopez.xyz',
 
     install_requires = REQS,
     packages = find_packages(exclude=['doc', '*tests*']),
     scripts = [],
     include_package_data = True,
 
-    keywords = 'graph theory, complex networks, network analysis',
+    keywords = "graph theory, complex networks, network analysis",
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -30,8 +30,7 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Scientific/Engineering :: Bio-Informatics',
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Scientific/Engineering :: Mathematics',
