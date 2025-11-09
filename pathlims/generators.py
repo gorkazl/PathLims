@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# Copyright (c) 2018, Gorka Zamora-López and Romain Brasselet
 # <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# Copyright (c) 2018, Gorka Zamora-López and Romain Brasselet
 # <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
@@ -177,13 +177,13 @@ question mark after the module's or function's name, e.g.:  ::
 	>>> modulename?
 	>>> functionname?
 
-For questions, bug reports, etc, please write to <galib@Zamora-Lopez.xyz>, or
+For questions, bug reports, etc, please write to <gorka@Zamora-Lopez.xyz>, or
 open an issue in GitHub.
 
 
 License
 -------
-Copyright 2018 - 2019, Gorka Zamora-López and Romain Brasselet,
+Copyright (c) 2018, Gorka Zamora-López and Romain Brasselet,
 <gorka@Zamora-Lopez.xyz>
 
 Licensed under the Apache License, Version 2.0 (the "License");
