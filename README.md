@@ -46,7 +46,7 @@ This will only download and install the package (files in "*src/pathlims/*") int
 
 #### Installing PathLims in editable mode
 
-If you want to install PathLims such that you can make changes to it "*on the fly*" then, visit its GitHub repository [https://github.com/gorkazl/PathLims/](https://github.com/gorkazl/PathLims/), select a branch and then click on the green "*<> Code*" button on the top right and select "Download ZIP" from the pop-up menu. Once downloaded, move the zpi file to a target folder (e.g., "*~/Documents/myLibraries/*") and unzip the file. Open a terminal and `cd` to the resulting folder, e.g.,
+If you want to install PathLims such that you can make changes to it "*on the fly*" then, visit its GitHub repository [https://github.com/gorkazl/PathLims/](https://github.com/gorkazl/PathLims/), select a branch and then click on the green "*<> Code*" button on the top right and select "Download ZIP" from the pop-up menu. Once downloaded, move the *zip* file to a target folder (e.g., "*~/Documents/myLibraries/*") and unzip the file. Open a terminal and `cd` to the resulting folder, e.g.,
 
 	cd ~/Documents/myLibraries/PathLims-master/
 
@@ -147,12 +147,11 @@ Finally, we corroborate that the numerical results match the theoretically expec
 
 ##### Data I/O
 
-Since PathLims is based on NumPy arrays, saving and reading of adjacency matrices, can be performed using the usual data I/O functionalities of NumPy. See for example the documentation for functions: `loadtxt()`, `savetxt()`, `load()`, `save()` and `savez()`.
-See also he *tools.py* module in pyGAlib for other data conversions.
+Since PathLims is based on NumPy arrays, saving and reading of adjacency matrices, can be performed using the usual data I/O functionalities of NumPy. See for example the documentation for functions: `loadtxt()`, `savetxt()`, `load()`, `save()` and `savez()`. See also the *tools.py* module in pyGAlib for other data conversions.
 
 
 
-### How to find further documentation
+### HOW TO FIND FURTHER DOCUMENTATION
 
 While working in an interactive session, after importing a module, the built-in `help()` function will show further details:
 
@@ -164,7 +163,7 @@ For further details regarding each function, type:
 
 	>>> help(pathlims.modulename.functionname)
 
-For IPython and Jupyter notebook users the help command is replaced by a question mark after the module's or function's name, e.g.:
+IPython and Jupyter notebook users, the help command is replaced by a question mark after the module's or function's name, e.g.:
 
 	>>> modulename?
 	>>> functionname?
