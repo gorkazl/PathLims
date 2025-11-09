@@ -3,8 +3,8 @@
 
 ### Priorities...
 
-1. Drop support for Python 2.
-2. Clean-up the library files. Remove unnecessary comments, copyright duplicates, etc.
+1. ~~Drop support for Python 2.~~
+2. ~~Clean-up the library files. Remove unnecessary comments, copyright duplicates, etc.~~
 3. f" … " string formatting.
 4. Replace runtime "prints" by proper warning and error detection.
 5. Update to the newer packaging and PyPI release standards.
