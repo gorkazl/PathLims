@@ -573,7 +573,7 @@ def USdigraph_FlowerDigraph(N,L):
     # 1) CALCULATE THE NUMBER OF CYCLES AND THEIR SIZES
     nloops = L - (N-1)
     minloopsize = int(L / nloops)
-    Nlooplist = minloopsize * np.ones(nloops, np.uint)
+    Nlooplist = minloopsize * np.ones(nloops, np.uint64)
 
     # Make some cycles longer (+1) if needed
     difference = L - int(Nlooplist.sum())

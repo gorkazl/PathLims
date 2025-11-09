@@ -280,7 +280,7 @@ def Pathlen_FlowerDigraph(N,L):
     # 1) CALCULATE THE NUMBER OF CYCLES AND THEIR SIZES
     nloops = L - (N-1)
     minloopsize = int(L / nloops)
-    Nlooplist = minloopsize * np.ones(nloops, np.uint)
+    Nlooplist = minloopsize * np.ones(nloops, np.uint64)
 
     # Make some cycles longer (+1) if needed
     difference = L - int(Nlooplist.sum())
@@ -428,7 +428,7 @@ def Effic_FlowerDigraph(N,L):
     # 1) CALCULATE THE NUMBER OF CYCLES AND THEIR SIZES
     nloops = L - (N-1)
     minloopsize = int(L / nloops)
-    Nlooplist = minloopsize * np.ones(nloops, np.uint)
+    Nlooplist = minloopsize * np.ones(nloops, np.uint64)
 
     # Make some cycles longer (+1) if needed
     difference = L - int(Nlooplist.sum())
@@ -544,8 +544,8 @@ def Effic_iStarDigraph(N,L):
     Effic_FlowerDigraph :
     """
     # 0) SECURITY CHECKS
-    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
-    if L < 0:       raise ValueError( "L does not take negative values" )
+    if N < 2:  raise ValueError( "Network needs at least two nodes, N > 1" )
+    if L < 0:  raise ValueError( "L does not take negative values" )
     if L > 2*(N-1): raise ValueError( "L out of range, max(L) = 2*(N-1)" )
 
     # 1) CALCULATE THE EFFICIENCY
@@ -554,7 +554,7 @@ def Effic_iStarDigraph(N,L):
     else:
         Ltot = float(N*(N-1))
         undL = int(L/2)
-        efficiency = 1./Ltot * ( L + 0.5*undL * (L-undL-1) )
+        efficiency = (1.0/Ltot) * ( L + 0.5*undL * (L-undL-1) )
 
     return efficiency
 
