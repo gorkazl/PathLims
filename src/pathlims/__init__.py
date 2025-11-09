@@ -198,9 +198,7 @@ from . import limits
 from . import generators
 
 
-__version__ = "2.0.dev0"
-
-
+__version__ = "2.0"
 
 
 #
