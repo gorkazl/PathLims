@@ -9,7 +9,7 @@
 4. ~~Replace runtime "prints" by proper warning and error detection.~~
 5. ~~Update to the newer packaging and PyPI release standards.~~
     1. ~~We will use Hatch, at least for now.~~
-    2. Move Matploblib into optional dependencies. Only used to run the examples.
+    2. Move Matploblib and pyGAlib into optional dependencies. Only used to run the examples.
         1. ~~Add `try: import matplotlib` to example files.~~
     3. Prepare PathLims for conda-sourceforge.
     4. Add instructions for conda users (either `conda install pathlims` or, ~~first install dependencies via conda and then `python -m pip install -e . --no-deps`~~. Or, release also a *yml* file with preinstallation of the dependencies.
