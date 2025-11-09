@@ -35,8 +35,6 @@ using `pip`. In a terminal, simply type:
 See further information in https://github.com/gorkazl/pyGAlib
 """
 
-from __future__ import division, print_function, absolute_import
-
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports

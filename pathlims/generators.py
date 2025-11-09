@@ -66,6 +66,7 @@ ULdigraph_Disconnected_Range2
 
 """
 # Standard library imports
+import warnings
 # Third party imports
 import numpy as np
 import numpy.random
@@ -119,8 +120,8 @@ def USgraph(N,L, uscase='Random', reportdisco=False):
     USgraph_RichClub :
     """
     # 0) SECURITY CHECKS
-    if N < 2: raise ValueError( "Network needs at least two nodes, N > 1" )
-    if L < 0:   raise ValueError( "L does not take negative values." )
+    if N < 2:  raise ValueError( "Network needs at least two nodes, N > 1" )
+    if L < 0:  raise ValueError( "L does not take negative values." )
     Ltot = 0.5*N*(N-1)
     if L > int(Ltot):  raise ValueError( "L out of bounds. max(L) = 1/2 * N*(N-1)" )
     assert uscase=='Random' or uscase=='RichClub', "'uscase' not valid. Please enter either 'Random' or 'RichClub'."
@@ -130,7 +131,7 @@ def USgraph(N,L, uscase='Random', reportdisco=False):
         # Generate a disconnected US graph
         adjmatrix = USgraph_Disconnected(N,L)
         if reportdisco:
-            print('Generated digraph is disconnected')
+            warnings.warn("Generated digraph is disconnected", category=RuntimeWarning)
     else:
         # Generate a connected US graph
         if uscase == 'Random':
@@ -391,7 +392,7 @@ def USdigraph(N,L, onlyconnected=True, uscase='Random', reportdisco=False):
         else:
             adjmatrix = USdigraph_iStarDigraph(N,L)
         if reportdisco:
-            print('Generated digraph is disconnected')
+            warnings.warn("Generated digraph is disconnected", category=RuntimeWarning)
 
     elif L < 2*(N-1):
         # Digraph may be disconnected.
@@ -410,7 +411,7 @@ def USdigraph(N,L, onlyconnected=True, uscase='Random', reportdisco=False):
             else:
                 adjmatrix = USdigraph_iStarDigraph(N,L)
                 if reportdisco:
-                    print('Generated digraph is disconnected')
+                    warnings.warn("Generated digraph is disconnected", category=RuntimeWarning)
 
     else:
         # The digraph is connected
