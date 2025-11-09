@@ -299,9 +299,9 @@ def Pathlen_FlowerDigraph(N,L):
     # 2.2) Calculate the contributions to pathlength per loop
     Ix = 0.5 * x**2 * (x-1)
     Iy = 0.5 * (x+1)**2 * x
-    Jxx = x*(x-1)**2
-    Jyy = x**2 * (x+1)
-    Jxy = 0.5 * x*(x-1)*(2*x+1)
+    Jxx = np.float64( x*(x-1)**2 )
+    Jyy = np.float64( x**2 * (x+1) )
+    Jxy = np.float64( 0.5 * x*(x-1)*(2*x+1) )
 
     # 2.3) Calculate the terms of the final sum
     Dx = mx * (Ix + (mx-1) * Jxx)       # Loops of length d
