@@ -15,7 +15,6 @@ PathLims
 PathLims is a package to study and generate networks with largest and shortest
 possible average pathlength (or largest and smallest global efficiencies).
 Networks are treated as adjacency matrices, represented as 2D NumPy arrays.
-Python 2.7 and 3.X compatible.
 
 The package contains three modules:
 
@@ -25,7 +24,7 @@ pathlength and global efficiency for networks of arbitrary size and number of li
 arbitrary size and number of links.
 - *helpers.py*: Miscellaneous helper functionalities. Needed to run the examples.
 
-Visit the help of each module for a complete list of functions.
+Visit the help of each module for a complete list of functions. More details below.
 
 .. note::
     PathLims is fully compatible with pyGAlib, a library for graph
@@ -38,7 +37,7 @@ For a complete description of the boundaries for the average pathlength and
 global efficiency, and for a illustration of ultra-short / ultra-long network
 generation, see:
 
-- G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+- G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
 Please cite the above reference if you use PathLims. Results for some special
 cases (connected and undirected graphs) can also be found in:
@@ -51,7 +50,7 @@ USING PathLims
 ^^^^^^^^^^^^^^
 Since PathLims depends on NumPy, it is recommended to import NumPy first.
 Although this is not necessary for loading the package, NumPy functionalities
-and array manipulation will be often needed. Try importing pathlims  ::
+and array manipulation will be often needed. Try importing pathlims  as ::
 
 	>>> import numpy as np
 	>>> import pathlims
@@ -153,7 +152,7 @@ Since PathLims is based on NumPy arrays, saving and reading of adjacency
 matrices, can be performed using the usual data I/O functionalities of NumPy.
 See for example the documentation for functions: ``loadtxt()``, ``savetxt()``,
 ``load()``, ``save()`` and ``savez()``.
-See also he *tools.py* module in pyGAlib for other data conversions.
+See also the *galib.tools* module in pyGAlib for other data conversions.
 
 How to find further documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,7 +168,7 @@ e.g., ``help(pathlims.limits)`` or ``help(pathlims.generators)`` will display
 module specific information and a list of all the functions in the module.
 For further details regarding each function, type:  ::
 
-	>>> help(galib.modulename.functionname)
+	>>> help(pathlims.modulename.functionname)
 
 For IPython and Jupyter notebook users the help command is replaced by a
 question mark after the module's or function's name, e.g.:  ::

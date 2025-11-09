@@ -96,7 +96,7 @@ def Pathlen_USgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
     For the connected case, see also:
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
@@ -150,7 +150,7 @@ def Effic_USgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
     For the connected case, see also
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
@@ -200,7 +200,7 @@ def Pathlen_USdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -252,7 +252,7 @@ def Pathlen_FlowerDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -330,7 +330,7 @@ def Effic_USdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -388,7 +388,7 @@ def Effic_FlowerDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -474,7 +474,7 @@ def Effic_iDirectedRing(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -523,7 +523,7 @@ def Effic_iStarDigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -572,7 +572,7 @@ def Pathlen_ULgraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
     L. Gulyas, G. Horvath, T. Cseri & G. Kampis *An estimation of the
@@ -639,7 +639,7 @@ def Effic_ULgraph(N,L, connected=True):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
     D. Barnpoutis & R.M. Murray *Extremal properties of complex networks*
     arXiv:1104.5532 (2011).
 
@@ -718,7 +718,7 @@ def Pathlen_ULdigraph(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -776,7 +776,7 @@ def Pathlen_ULdigraph_Range1_MBS(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -827,7 +827,7 @@ def Pathlen_ULdigraph_Range1_Approx(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -876,7 +876,7 @@ def Pathlen_ULdigraph_Intermediate(N):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -915,7 +915,7 @@ def Pathlen_ULdigraph_Range2(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -979,7 +979,7 @@ def Effic_ULdigraph_Range1_MBS(N,M):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1029,7 +1029,7 @@ def Effic_ULdigraph_Intermediate(N):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
@@ -1076,7 +1076,7 @@ def Effic_ULdigraph_Disconnected(N,L):
 
     Reference and citation
     ^^^^^^^^^^^^^^^^^^^^^^
-    G. Zamora-López & R. Brasselet "Sizing complex networks" Commun Phys 2:144 (2019)
+    G. Zamora-López & R. Brasselet "Sizing complex networks" Comms Phys 2:144 (2019)
 
     Parameters
     ----------
