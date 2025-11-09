@@ -55,5 +55,6 @@ path = "src/pathlims/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "src//pathlims",
+    "src/pathlims",
+    "Figs/",
 ]
