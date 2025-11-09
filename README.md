@@ -1,6 +1,6 @@
 # PathLims – Ultra-Short and Ultra-Long Network Generation
 
-PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays. Python 2.7 and 3.X compatible.
+PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays. 
 
 The package contains two modules:
 
@@ -15,44 +15,46 @@ Visit the help of each module for a complete list of functions.
 
 For a complete description of the boundaries for the average pathlength and global efficiency, and for a illustration of ultra-short / ultra-long network generation, see:
 
-- G. Zamora-López & R. Brasselet "[Sizing complex networks](https://doi.org/10.1038/s42005-019-0239-0)" *Commun. Phys.* **2**:144 (2019).
+- G. Zamora-López & R. Brasselet "[Sizing complex networks](https://doi.org/10.1038/s42005-019-0239-0)" *Comms. Phys.* **2**:144 (2019).
 
-Please cite the above reference if you use PathLims.
-Results for some special cases (connected and undirected graphs) can also be found in: D. Barmpoutis & R.M. Murray "*Extremal Properties of Complex Networks*"
-arXiv:1104.5532v1 (2011); and L. Gulyas, et al. "*An Estimation of the Shortest and Largest Average Path Length in Graphs of Given Density*"
-arXiv:1101.2549v1 (2011).
+Please cite the above reference if you use PathLims. Results for some special cases (connected and undirected graphs) can also be found in: D. Barmpoutis & R.M. Murray "*Extremal Properties of Complex Networks*" arXiv:1104.5532v1 (2011); and L. Gulyas, et al. "*An Estimation of the Shortest and Largest Average Path Length in Graphs of Given Density*" arXiv:1101.2549v1 (2011).
+
 
 ### INSTALLATION
 
-Installation of PathLims is simple. An existing python distribution and the [pip](https://github.com/pypa/pip) package manager need to be installed. If Python was installed via the [Canopy](https://www.enthought.com/product/canopy/) or the [Anaconda](https://www.anaconda.com) distributions, then `pip` is surely installed. To check, open a terminal and type:
+Installation of PathLims is simple, only the [pip](https://github.com/pypa/pip) package manager is needed. To check whether `pip` is installed, open a terminal and type:
 
-	$ pip --help
+	pip --help
 
-**- The simple installation**: PathLims is registered in [PyPI](https://pypi.org/project/pathlims/) (the Python Packages Index), therefore installation from the terminal is straight forward. `pip` will automatically take care of the  dependencies (see the *requirements.txt* file). Simply type:
+> **NOTE**: If you use Anaconda (or any other third-party package manager), we recommend to install the dependencies (python>=3.6, numpy, scipy) into the target environment using Anaconda before installing PathLims. Otherwise, `pip` will download and install those packages directly from PyPI as well, and you won't be able to manage them from Acanconda.
 
-	$ pip install pathlims
+#### Installing from PyPI 
 
-To confirm the installation open an interactive session and try to import the library by typing `import pathlims`.
+PathLims is registered in the official *Python Package Index*, [PyPI](https://pypi.org/project/pathlims/) . To install, open a terminal window and type:
 
-> **NOTE:** If you are using Python 2 and Python 3 environments, PathLims needs to be installed in each of the environments separately.
+	python3 -m pip install pathlims
 
-**- Installation from GitHub (lazy version)**: If [git](https://git-scm.com) is also installed in your computer, then open a terminal and type:
+To confirm the installation, open an interactive session (e.g., IPython or a Notebook) and try to import the library by typing `import pathlims`.
 
-	$ pip install git+https://github.com/gorkazl/PathLims.git@master
+#### Direct installation from GitHub 
 
-This will install the package, that is, the content in the folder *pathlims/*. Other files (Examples/, README.md, LICENSE.txt, etc.) need to be downloaded manually, if wanted.
+If you have [git](https://git-scm.com) installed, you may like to install PathLims directly from its GitHub repository. Open a terminal and type:
 
-**- Installation from GitHub (full download)**: Visit the GitHub repository [https://github.com/gorkazl/PathLims/](https://github.com/gorkazl/PathLims/) and click on the "Clone or download" button at the right hand side (the green button). Select "Download ZIP". Unzip the file, open a terminal and move to the folder, e.g.,
+	python3 -m pip install git+https://github.com/gorkazl/PathLims.git@master
 
-	$ cd ~/Downloads/PathLims-master/
+This will only download and install the package (files in "*src/pathlims/*") into your current environment. If desired, additional files of the repository (e.g. the examples in the *Examples/* folder) should be downloaded manually. You can choose to install the version in another branch by replacing the '*@master*' at the end of the command by '*@branchname*' of the desired branch.
 
-Once on the folder that contains the *setup.py* file, type the following
+#### Installing PathLims in editable mode
 
-	$ pip install .
+If you want to install PathLims such that you can make changes to it "*on the fly*" then, visit its GitHub repository [https://github.com/gorkazl/PathLims/](https://github.com/gorkazl/PathLims/), select a branch and then click on the green "*<> Code*" button on the top right and select "Download ZIP" from the pop-up menu. Once downloaded, move the zpi file to a target folder (e.g., "*~/Documents/myLibraries/*") and unzip the file. Open a terminal and `cd` to the resulting folder, e.g.,
 
-Do not forget the "." at the end which means "*look for the setup.py file in the current directory*." This will check for the dependencies and install PathLims.
+	cd ~/Documents/myLibraries/PathLims-master/
 
-> **NOTE**: After installation the current folder "*~/Downloads/PathLims-master/*" can be safely deleted, or moved somewhere else if you want to conserve the examples and the tests.
+Once on the path (make sure it contains the *pyproject.toml* file), type:
+
+	python3 -m pip install -e .
+
+Do not forget the "." at the end which means "*look for the pyproject.toml file in the current directory*." This will install PathLims such that every time changes are made to the package (located in the path chosen), these will be inmediately available. You may need to restart the IPython or Jupyter notebook session, though.
 
 
 ### HOW TO USE PathLims
@@ -150,7 +152,7 @@ See also he *tools.py* module in pyGAlib for other data conversions.
 
 
 
-#### How to find further documentation
+### How to find further documentation
 
 While working in an interactive session, after importing a module, the built-in `help()` function will show further details:
 
@@ -167,39 +169,29 @@ For IPython and Jupyter notebook users the help command is replaced by a questio
 	>>> modulename?
 	>>> functionname?
 
-For questions, bug reports, etc, please write to <galib@Zamora-Lopez.xyz>, or open an issue in GitHub.
+For questions, bug reports, etc, please write to <gorka@Zamora-Lopez.xyz>, or open an issue in GitHub.
 
 
 ### LICENSE
-Copyright 2018 - 2019, Gorka Zamora-López <gorka@Zamora-Lopez.xyz>
+Copyright 2018, Gorka Zamora-López <<gorka@Zamora-Lopez.xyz>> and Romain Brasselet.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this software except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0. You may not use this software except in compliance with the License. You may obtain a copy of the License at
 
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
 -----------------------------------------------------------------
 ### WHAT IS NEW
 
-##### November 22, 2019
-Stable version 1.0.0 checked, validated and released.
+##### November 9, 2025 (Release of Version 2)
 
-* PathLims has been registered in PyPI ([https://pypi.org/project/pathlims/](https://pypi.org/project/pathlims/)). Direct installation and version management using `pip` is now available.
-* Two Jupyter notebooks added for tutorial: *EmpiricalNets_Directed.ipynb* and *EmpiricalNets_Undirected.ipynb.*
+Stable version 2.0 checked, validated and released.
 
-##### December 31, 2018
-Example scripts have been added and some datasets:
+* The library has been reshaped to be compliant with the modern [PyPA specifications](https://packaging.python.org/en/latest/specifications/).
+* [Hatch](https://hatch.pypa.io/latest/) was chosen as the tool to build and publish the package. See the *pyproject.toml* file. 
+* Bug fixes to adapt to the various changes in NumPy since last release of PathLims.
+* Sample and validation scripts in the "*Examples/*" folder revised and adapted to recent changes in Python and NumPy. 
 
-- Two scripts (*EmpiricalNets_Directed.py* and *EmpiricalNets_Undirected.py*) to illustrate how to compare the pathlength and efficiency of real networks to those of ring lattices, random graphs and the true ultra-long and ultra-short limits.
-- Four scripts (*UltraLong_Digraphs.py*, *UltraLong_Graphs.py*, *UltraShort_Digraphs.py* and *UltraShort_Graphs.py*) in which ultra-long and ultra-short networks are generated, their pathlength and efficiencies  are numerically calculated, and compared to the theoretical values for corroboration.
 
-##### December 22, 2018
-Version 1.0.0b2 (beta) of PathLims has been uploaded.
