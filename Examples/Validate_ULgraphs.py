@@ -11,6 +11,7 @@
 #
 # REFERENCE AND CITATION
 # When using PathLims, please cite:
+#
 # G. Zamora-López & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
 #
 
@@ -27,7 +28,7 @@ PathLims works as an stand-alone package. For simplicity, however, this example
 require that the pyGAlib package is installed for the manipulation, analysis and
 generation of (di)graphs. pyGAlib can be installed from the Python Package Index
 using `pip`. In a terminal, simply type:
-    $ pip install galib
+    $ python3 -m pip install galib
 
 See further information in https://github.com/gorkazl/pyGAlib
 """
@@ -35,8 +36,6 @@ See further information in https://github.com/gorkazl/pyGAlib
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import galib, galib.metrics_numba
@@ -55,15 +54,15 @@ Llist = np.arange(Lmax+1)
 nL = len(Llist)
 
 # Print some feedback
-print( '\nNetwork size, N:', N )
+print( f"\nNetwork size, N: {N}" )
 
 
 # 1) DO THE CALCULATIONS -- CONNECTED GRAPHS
 time1 = timer()
-pathlen_num = np.zeros(nL, np.float)
-pathlen_th = np.zeros(nL, np.float)
-effic_num_con = np.zeros(nL, np.float)
-effic_th_con = np.zeros(nL, np.float)
+pathlen_num = np.zeros(nL, np.float64)
+pathlen_th = np.zeros(nL, np.float64)
+effic_num_con = np.zeros(nL, np.float64)
+effic_th_con = np.zeros(nL, np.float64)
 pathlen_num[:N-1] = np.inf
 pathlen_th[:N-1] = np.inf
 
@@ -88,9 +87,9 @@ for L in range(N-1, nL):
 # treated in the future.
 Mlist = np.arange(2,N+1)
 nM = len(Mlist)
-LMlist = np.zeros(nM, np.uint)
-effic_num_disco = np.zeros(nM, np.float)
-effic_th_disco = np.zeros(nM, np.float)
+LMlist = np.zeros(nM, np.uint64)
+effic_num_disco = np.zeros(nM, np.float64)
+effic_th_disco = np.zeros(nM, np.float64)
 
 print( 'Calculating results for DISCONNECTED graphs ...' )
 for counter,M in enumerate(Mlist):

@@ -11,6 +11,7 @@
 #
 # REFERENCE AND CITATION
 # When using PathLims, please cite:
+#
 # G. Zamora-López & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
 #
 
@@ -37,8 +38,6 @@ See further information in https://github.com/gorkazl/pyGAlib
 # Standard library imports
 import os
 # Third party imports
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import galib, galib.tools, galib.models, galib.metrics_numba
@@ -64,8 +63,8 @@ L = 0.5*net.sum()
 Lmax = int( 0.5*N*(N-1) )
 density = L / Lmax
 # Print some feedback
-print('\nNetwork:', netfname)
-print('N: %d\tL: %d\tDensity: %1.4f' %(N,L, density) )
+print( f"\nNetwork: {netfname}" )
+print( f"N: {N:d}\tL: {int(L):d}\tDensity: {L/Lmax:1.4f}" )
 
 
 # 1) NUMERICALLY COMPUTE THE PATHLENGTH AND EFFICIENCY OF THE NETWORK
@@ -101,10 +100,10 @@ effic_ul = lims.Effic_ULgraph(N,L, connected=connected)
 # 3) CALCULATE AVERAGE PATHLENGTH FOR EQUIVALENT RANDOM GRAPHS AND RING LATTICES
 # 3.1) Equivalent random graphs, from ensemble
 nrealiz = 100
-print( "\nCalculating %d random realizations ..." %nrealiz)
+print( f"\nCalculating {nrealiz} random realizations ..." )
 
-pathlenlist = np.zeros(nrealiz, np.float)
-efficlist = np.zeros(nrealiz, np.float)
+pathlenlist = np.zeros(nrealiz, np.float64)
+efficlist = np.zeros(nrealiz, np.float64)
 for re in range(nrealiz):
     if re in np.arange(10,110,10):
         print( re )
@@ -135,8 +134,8 @@ else:
     pathlen_rand = np.nan
 nbad = nrealiz - goodidx.size
 if nbad:
-    print( '%d disconnected random graph(s) found out of %d realizations' %(nbad,nrealiz) )
-    print( 'Discarding them from calculation of ensemble average pathlength' )
+    print( f"{nbad:d} disconnected random graph(s) found out of {nrealiz:d} realizations" )
+    print( 'Ignored from ensemble average pathlength' )
 # Calculate the ensemble average pathlength
 effic_rand = efficlist.mean()
 
@@ -155,11 +154,11 @@ effic_latt = ( leij.sum() - leij.trace() ) / (2*Lmax)
 # 3.1) Print some feedback
 print( '\nRESULTS --------------------------------------' )
 print( '\t\tPathlength\tEfficiency' )
-print( 'Ultra-short\t%2.4f\t\t%2.4f' %(pathlen_us, effic_us) )
-print( 'Random\t\t%2.4f\t\t%2.4f'   %(pathlen_rand, effic_rand) )
-print( 'Empirical\t%2.4f\t\t%2.4f'  %(pathlen_emp, effic_emp) )
-print( 'Lattice\t\t%2.4f\t\t%2.4f'  %(pathlen_latt, effic_latt) )
-print( 'Ultra-long\t%2.4f\t\t%2.4f' %(pathlen_ul, effic_ul) )
+print( f"Ultra-short\t{pathlen_us:2.4f}\t\t{effic_us:2.4f}" )
+print( f"Random\t\t{pathlen_rand:2.4f}\t\t{effic_rand:2.4f}" )
+print( f"Empirical\t{pathlen_emp:2.4f}\t\t{effic_emp:2.4f}" )
+print( f"Lattice\t\t{pathlen_latt:2.4f}\t\t{effic_latt:2.4f}" )
+print( f"Ultra-long\t{pathlen_ul:2.4f}\t\t{effic_ul:2.4f}" )
 
 # 3.2) Plot the figures
 plt.figure()

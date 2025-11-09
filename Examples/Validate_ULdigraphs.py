@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 - 2019, Gorka Zamora-López and Romain Brasselet
+# Copyright (c) 2018, Gorka Zamora-López and Romain Brasselet
 # <gorka@Zamora-Lopez.xyz>
 #
 # Released under the Apache License, Version 2.0 (the "License");
@@ -10,11 +10,9 @@
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
 # REFERENCE AND CITATION
-# When using PathLims please cite:
+# When using PathLims, please cite:
 #
-# G. Zamora-Lopez & R. Brasselet *Sizing the length of complex networks*
-# arXiv:1810.12825 (2018).
-#
+# G. Zamora-López & R. Brasselet "Sizing complex networks", Commun Phys 2:144 (2019)
 #
 
 """
@@ -30,7 +28,7 @@ PathLims works as an stand-alone package. For simplicity, however, this example
 require that the pyGAlib package is installed for the manipulation, analysis and
 generation of (di)graphs. pyGAlib can be installed from the Python Package Index
 using `pip`. In a terminal, simply type:
-    $ pip install galib
+    $ python3 -m pip install galib
 
 See further information in https://github.com/gorkazl/pyGAlib
 """
@@ -38,8 +36,6 @@ See further information in https://github.com/gorkazl/pyGAlib
 # Standard library imports
 from timeit import default_timer as timer
 # Third party imports
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import galib, galib.metrics_numba
@@ -58,7 +54,7 @@ Llist = np.arange(Lmax+1)
 nL = len(Llist)
 
 # Print some feedback
-print( '\nNetwork size, N:', N )
+print( f"\nNetwork size, N:{N}" )
 
 
 # 1) DO THE CALCULATIONS -- CONNECTED GRAPHS
@@ -73,11 +69,11 @@ time1 = timer()
 # Pathlen_ULdigraph_Range1_Approx()
 Mlist1 = np.arange(1,N)
 nM = len(Mlist1)
-Llist1 = np.zeros(nM, np.uint)
-pathlen_num1 = np.zeros(nM, np.float)
-pathlen_th1 = np.zeros(nM, np.float)
-effic_num_con1 = np.zeros(nM, np.float)
-effic_th_con1 = np.zeros(nM, np.float)
+Llist1 = np.zeros(nM, np.uint64)
+pathlen_num1 = np.zeros(nM, np.float64)
+pathlen_th1 = np.zeros(nM, np.float64)
+effic_num_con1 = np.zeros(nM, np.float64)
+effic_th_con1 = np.zeros(nM, np.float64)
 
 print( 'Calculating results for CONNECTED digraphs ...' )
 print( 'Range 1:  L < 1/2 N(N-1) + (N-1)' )
@@ -112,10 +108,10 @@ effic_th_inter = lims.Effic_ULdigraph_Intermediate(N)
 L2min = int( (N+1) + 0.5*N*(N-1) )
 Llist2 = np.arange(L2min, Lmax+1)
 nL2 = len(Llist2)
-pathlen_num2 = np.zeros(nL2, np.float)
-pathlen_th2 = np.zeros(nL2, np.float)
-effic_num_con2 = np.zeros(nL2, np.float)
-effic_th_con2 = np.zeros(nL2, np.float)
+pathlen_num2 = np.zeros(nL2, np.float64)
+pathlen_th2 = np.zeros(nL2, np.float64)
+effic_num_con2 = np.zeros(nL2, np.float64)
+effic_th_con2 = np.zeros(nL2, np.float64)
 
 print( 'Range 2:  L > 1/2 N(N-1) + (N-1)' )
 for counter,L in enumerate(Llist2):
@@ -136,8 +132,8 @@ for counter,L in enumerate(Llist2):
 Lhalf = int( 0.5*N*(N-1) )
 Llist_disco1 = np.arange(Lhalf+1)
 nL1 = len(Llist_disco1)
-effic_num_disco1 = np.zeros(nL1, np.float)
-effic_th_disco1 = np.zeros(nL1, np.float)
+effic_num_disco1 = np.zeros(nL1, np.float64)
+effic_th_disco1 = np.zeros(nL1, np.float64)
 
 print( 'Calculating results for DISCONNECTED digraphs ...' )
 print( 'Range 1: L < 1/2 N(N-1)' )
@@ -159,8 +155,8 @@ for L in range(nL1):
 Mlist = np.arange(2,N+1)
 nM = len(Mlist)
 Llist_disco2 = np.zeros(nM, np.uint)
-effic_num_disco2 = np.zeros(nM, np.float)
-effic_th_disco2 = np.zeros(nM, np.float)
+effic_num_disco2 = np.zeros(nM, np.float64)
+effic_th_disco2 = np.zeros(nM, np.float64)
 
 print( 'Range 2: L > 1/2 N(N-1)' )
 for counter,M in enumerate(Mlist):
@@ -178,7 +174,7 @@ for counter,M in enumerate(Mlist):
     effic_th_disco2[counter] = lims.Effic_ULdigraph_Disconnected(N,LM)
 
 time2 = timer()
-print(time2 - time1, 'seconds')
+print( time2 - time1, 'seconds' )
 
 
 # 3) SUMMARISE THE RESULTS
