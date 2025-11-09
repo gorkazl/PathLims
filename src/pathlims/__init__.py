@@ -198,7 +198,7 @@ from . import limits
 from . import generators
 
 
-__version__ = "2.0"
+__version__ = "2.0.post1"
 
 
 #
