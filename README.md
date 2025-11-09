@@ -2,9 +2,9 @@
 
 PathLims is a package to study and generate networks with largest and shortest possible average pathlength (or largest and smallest global efficiencies). Networks are treated as adjacency matrices, represented as 2D NumPy arrays.
 
-[![pypi version](https://img.shields.io/pypi/v/pathlims?logo=pypi)](https://pypi.org/project/pathlims/)  
+[![pypi version](https://img.shields.io/pypi/v/pathlims?logo=pypi)](https://pypi.org/project/pathlims/)
 [![PyPI Downloads](https://img.shields.io/pypi/dm/pathlims.svg?label=PyPI%20downloads)](
-https://pypi.org/project/pathlims/)  
+https://pypi.org/project/pathlims/)
 [![Apache-2.0 License](https://img.shields.io/badge/license-Apache-blue.svg?style=flat)](http://choosealicense.com/licenses/Apache-2.0/)
 
  
