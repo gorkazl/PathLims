@@ -5,8 +5,8 @@
 
 1. ~~Drop support for Python 2.~~
 2. ~~Clean-up the library files. Remove unnecessary comments, copyright duplicates, etc.~~
-3. f" … " string formatting.
-4. Replace runtime "prints" by proper warning and error detection.
+3. ~~f" … " string formatting~~.
+4. ~~Replace runtime "prints" by proper warning and error detection.~~
 5. Update to the newer packaging and PyPI release standards.
     1. We will use Hatch, at least for now.
     2. Move Matploblib into optional dependencies. Only used to run the examples.
@@ -15,7 +15,12 @@
     4. Add instractions for conda users (either `conda install pathlims` or, first install dependencies via conda and then `python -m pip install -e . --no-deps`. Or, release also a *yml* file with preinstallation of the dependencies.
 6. Clean, revise and test scripts in the Examples/ folder.
 7. Integrate PathLims into pyGAlib (?). **I certainly will need to do so, for conda-forge integration. Otherwise I would have to import/install via pip, for a conda package.**
-10. *Suggest your own…*
+8. Test, test, test:
+    1. Run the example scripts.
+    2. Warning and error cases.
+9. Update README.md file:
+    1. Add version and status indicators at the top. 
+    2. Revise installation instructions.
 
 
 ### This and that...
